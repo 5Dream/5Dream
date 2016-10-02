@@ -25,6 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UI", "UI\", "{845ED5C7-2494
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "3272"
+		SlnRelativePath = "UI\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

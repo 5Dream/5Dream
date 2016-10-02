@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="AdminMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style type="text/css">
+        #main {
+            width:100%;
+            height:660px;
+            background-image:url(images/ic_main_bg.png);
+        }
+        #top {
+            width:100%;
+            height:80px;
+            background-image:url(images/top.png);
+            background-repeat:no-repeat;
+            background-color:#201ff4;
+            background-size:contain;
+        }
+        #content {
+            margin-top:2px;
+            width:100%;
+            height:500px;
+            background-color:#ffffff;
+        }
+        #left {
+            width:13%;
+            height:100%;
+           background-repeat:repeat-x;
+           background-color:#babbfa;
+            float:left;
+        }
+        #right {
+            width:87%;
+            height:100%;
+            background-color:#201ff4;
+            float:left;
+        }
+        #foot {
+            width:100%;
+            height:80px;
+            background-color:#ffffff;
+            text-align:center;
+            line-height:80px;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    <div id="main">
+        <div id="top"></div>
+        <div id="content">
+            <div id="left">
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XmlDataSource1" Width="16px" ImageSet="Arrows">
+                    <DataBindings>
+                        <asp:TreeNodeBinding DataMember="siteRoot" TextField="title" />
+                        <asp:TreeNodeBinding DataMember="siteMapNode" TextField="title" />
+                        <asp:TreeNodeBinding DataMember="siteMapSubNode" NavigateUrlField="url" TextField="title" />
+                    </DataBindings>
+                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                    <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                    <ParentNodeStyle Font-Bold="False" />
+                    <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+                </asp:TreeView>
+            </div>
+            <div id="right">
+                 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                 </asp:ContentPlaceHolder>
+            </div>
+            <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/AdminXMLFile.xml"></asp:XmlDataSource>
+        </div>
+        <div id="foot">
+            由第6小组开发制作。
+        </div>
+    </div>
+    </form>
+</body>
+</html>
