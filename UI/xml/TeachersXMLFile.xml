@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteRoot id="root" url="" title="教师面板" description="">
+  <siteMapNode url="" title="个人信息" description="">
+    <siteMapSubNode url="" title="修改密码" description="" />
+  </siteMapNode>
+
+  <siteMapNode url="" title="考勤信息" description="">
+    <siteMapSubNode url="" title="录入考勤" description="" />
+    <siteMapSubNode url="" title="以往记录" description="" />
+  </siteMapNode>
+</siteRoot>

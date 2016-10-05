@@ -19,12 +19,12 @@
             height:860px;
             background-repeat:no-repeat;
             background-size:100% 100%;
-            background-image:url(images/ic_adminmat_main_bg.png);
+            background-image:url('../images/ic_adminmat_main_bg.png');
         }
         #top {
             width:100%;
             height:80px;
-            background-image:url(images/ic_admin_mat_top_bg.png);
+            background-image:url('../images/ic_admin_mat_top_bg.png');
             background-repeat:no-repeat;
             background-color:#201ff4;
             background-size:contain;
@@ -81,7 +81,7 @@
                  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
                  </asp:ContentPlaceHolder>
             </div>
-            <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/AdminXMLFile.xml"></asp:XmlDataSource>
+            <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/xml/AdminXMLFile.xml"></asp:XmlDataSource>
         </div>
         <div id="foot">
             由第6小组开发制作。
