@@ -29,5 +29,6 @@
 
   <siteMapNode url="" title="考勤信息" description="">
     <siteMapSubNode url="" title="录入考勤" description="" />
+    <siteMapSubNode url="" title="以往记录" description="" />
   </siteMapNode>
 </siteRoot>

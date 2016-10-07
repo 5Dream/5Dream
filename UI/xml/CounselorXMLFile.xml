@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteRoot id="root" url="" title="学管人员面板" description="">
+  <siteMapNode url="" title="个人信息" description="">
+    <siteMapSubNode url="" title="修改密码" description="" />
+  </siteMapNode>
+
+  <siteMapNode url="" title="数据分析" description="">
+    <siteMapSubNode url="" title="本系分析" description="" />
+    <siteMapSubNode url="" title="漏报统计" description="" />
+    <siteMapSubNode url="" title="缺勤汇总" description="" />
+    <siteMapSubNode url="" title="数据导出" description="" />
+  </siteMapNode>
+
+  <siteMapNode url="" title="考勤处理" description="">
+    <siteMapSubNode url="" title="录入考勤" description="" />
+    <siteMapSubNode url="" title="以往记录" description="" />
+  </siteMapNode>
+</siteRoot>
