@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{9A1C370A-008E-4D83-87A8-FE76C330B8B3}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UI", "UI\", "{845ED5C7-2494-4B07-AB0E-423CBD06BB56}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		ProjectReferences = "{9dfb0b3e-2009-47e8-b389-354eaed360d8}|BLL.dll;{c6339884-6a23-4724-aa56-dec87aa670b6}|Model.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_3272"
 		Debug.AspNetCompiler.PhysicalPath = "UI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3272\"
