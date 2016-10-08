@@ -65,16 +65,16 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text="用户名" Width="50px"></asp:Label>
+                            <asp:Label ID="UserID" runat="server" Text="用户名" Width="50px"></asp:Label>
                         </td>
-                        <td colspan="2"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td>
+                        <td colspan="2"><asp:TextBox ID="txtUserID" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td>
-                              <asp:Label ID="Label2" runat="server" Text="  密码" Width="50px"></asp:Label>
+                              <asp:Label ID="UserPWD" runat="server" Text="  密码" Width="50px"></asp:Label>
                         </td>
                         <td colspan="2">
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="strPWD" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -97,7 +97,7 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <asp:Button ID="Button1" runat="server" Text="登录" Width="50px" />  
+                            <asp:Button ID="btnLogin" runat="server" Text="登录" Width="50px" OnClick="Button1_Click" />  
                         </td>
                     </tr>
                 </table>
