@@ -8,15 +8,17 @@ using System.Data;
 
 namespace BLL
 {
-    class AddSQLStringToDAL
+    public class AddSQLStringToDAL
     {
-        public static DataTable GetDatatableBySQL(string str1, string str2, string str3)
+        public static DataTable GetDatatableBySQL(string str1, string str2, string str3,string str4,string str5)
         {
            // throw new NotImplementedException();
             string strTemp = BuildSQLSelectString(str1, str2, str3);
             return ConnHelper.GetDataTable(strTemp);
         }
-        public static DataTable GetDatatableBySQL() { }
+        public static DataTable GetDatatableBySQL()
+        {
+        }
 
     }
 }

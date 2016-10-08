@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    class ConnHelper
+    public class ConnHelper
     {
         public static List<string> GetDistinceColoum(string strSQL, string str1)
         {

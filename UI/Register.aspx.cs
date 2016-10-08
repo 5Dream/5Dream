@@ -16,7 +16,7 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        DataTable dt = AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", "UserID", txtUserID.Text.Trim(), "UserPWD", strPWD);
+        DataTable dt = AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", "UserID", txtUserID.Text.Trim(), "UserPWD", strPWD.Text.ToString());
         if (dt.Rows.Count == 1)
         {
             string Role = dt.Rows[0]["Role"].ToString();
