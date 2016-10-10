@@ -10,14 +10,11 @@ namespace BLL
 {
     public class AddSQLStringToDAL
     {
-        public static DataTable GetDatatableBySQL(string str1, string str2, string str3,string str4,string str5)
+        public static DataTable UserLogin(string UserID,string UserPWD)
         {
-           // throw new NotImplementedException();
-            string strTemp = BuildSQLSelectString(str1, str2, str3);
-            return ConnHelper.GetDataTable(strTemp);
-        }
-        public static DataTable GetDatatableBySQL()
-        {
+            string strSQL = "select * from TabTeachers where UserID=" + UserID + "and UserPWD=" + UserPWD + "";
+            DataTable dt = ConnHelper.GetDataTable(strSQL);
+            return dt;
         }
 
     }

@@ -16,27 +16,29 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        DataTable dt = AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", "UserID", txtUserID.Text.Trim(), "UserPWD", strPWD.Text.ToString());
+        DataTable dt = AddSQLStringToDAL.UserLogin( txtUserID.Text.Trim(),  strPWD.Text.ToString());
         if (dt.Rows.Count == 1)
         {
             string Role = dt.Rows[0]["Role"].ToString();
+
+            Session["UserID"] = dt.Rows[0]["UserName"].ToString();
+            Session["Role"] = dt.Rows[0]["Role"].ToString();
             switch (Role)
             {
                 case "1":
-                    Session["Role"] = "";
-                    Response.Redirect("");
+                    Response.Redirect("AdminDemo.aspx");
                     break;
                 case "2":
-                    Session["Role"] = "";
-                    Response.Redirect("");
+                    
+                    Response.Redirect("CounselorDemo.aspx");
                     break;
                 case "3":
-                    Session["Role"] = "";
-                    Response.Redirect("");
+                   
+                    Response.Redirect("DepartDemo.aspx");
                     break;
                 case "4":
-                    Session["Role"] = "";
-                    Response.Redirect("");
+                   
+                    Response.Redirect("TeachersDemo.aspx");
                     break;
                 default:
                     break;
@@ -46,6 +48,7 @@ public partial class Register : System.Web.UI.Page
         }
         else
         {
+           
            // Session["ValidateCode"] = "";
             //lblMessage.Text = "用户名或密码不正确";
             
