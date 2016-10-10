@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><image src="ValidateImage.aspx" alt="验证字符" style="width:80px;height:20px"onclick="this.src=this.src+'?'" /></td>
+                        <td><img src="ValidateImage.aspx" alt="验证字符" style="width:80px;height:20px"onclick="this.src=this.src+'?'" /></td>
                         <td></td>
                     </tr>
                     <tr>
