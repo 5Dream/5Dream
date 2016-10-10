@@ -9,53 +9,55 @@
         table {
             margin:0 auto;
             text-align:center;
-            border-bottom-color:#000000;
-            border:2px;
+                text-size-adjust:100%;
         }
+        #AddNewTeacher {
+            background:#00ffff;
+            border-bottom-width:1px; 
+            border-bottom-color:#000000;
+        
+            width:400px;
+            height:400px;
+        }
+        
     </style>
-    <table>
-        <tr>
-            <td><asp:Label ID="Label2" runat="server" Text="教师类型"></asp:Label></td>
-            <td>  <asp:DropDownList ID="DropDownList1" runat="server" Height="17px" style="margin-left: 0" Width="144px">
-    </asp:DropDownList></td>
-        </tr>
-        <tr>
-            <td><asp:Label ID="Label3" runat="server" Text="所属部门"></asp:Label></td>
-            <td><asp:DropDownList ID="DropDownList2" runat="server" Height="17px" style="margin-left: 0" Width="144px">
-    </asp:DropDownList></td>
-        </tr>
-        <tr>
-            <td><asp:Label ID="Label4" runat="server" Text="教师工号"></asp:Label></td>
-            <td><asp:TextBox ID="TextBox1" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td><asp:Label ID="Label5" runat="server" Text="教师姓名"></asp:Label></td>
-            <td><asp:TextBox ID="TextBox2" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td><asp:Label ID="Label6" runat="server" Text="密码"></asp:Label></td>
-            <td><asp:TextBox ID="TextBox3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
-        </tr>
-        <tr>
-            <td> <asp:Label ID="Label7" runat="server" Text="权限"></asp:Label></td>
-            <td> <asp:DropDownList ID="DropDownList3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:DropDownList></td>
-        </tr>
-        <tr>
-            <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge"/></td>
-            <td><asp:Button ID="Button2" runat="server" Text="取消" /></td>
-        </tr>
+    <div>
+        <table id="AddNewTeacher">
+            <tr>
+                <td><asp:Label ID="Label2" runat="server" Text="教师类型"></asp:Label></td>
+                <td>  <asp:DropDownList ID="DropDownList1" runat="server" Height="17px" style="margin-left: 0" Width="144px">
+        </asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label3" runat="server" Text="所属部门"></asp:Label></td>
+                <td><asp:DropDownList ID="DropDownList2" runat="server" Height="17px" style="margin-left: 0" Width="144px">
+        </asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label4" runat="server" Text="教师工号"></asp:Label></td>
+                <td><asp:TextBox ID="TextBox1" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label5" runat="server" Text="教师姓名"></asp:Label></td>
+                <td><asp:TextBox ID="TextBox2" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="Label6" runat="server" Text="密码"></asp:Label></td>
+                <td><asp:TextBox ID="TextBox3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td> <asp:Label ID="Label7" runat="server" Text="权限"></asp:Label></td>
+                <td> <asp:DropDownList ID="DropDownList3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:DropDownList></td>
+            </tr>
+            <tr>
+                <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge"/></td>
+                <td><asp:Button ID="Button2" runat="server" Text="取消" /></td>
+            </tr>
 
 
-    </table>
+        </table>
     
-  
+  </div>
    
-   
-    
-    <br />
-    
-    
-
-    <br />
 </asp:Content>
 
