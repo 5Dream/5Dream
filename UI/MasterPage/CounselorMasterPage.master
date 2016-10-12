@@ -58,8 +58,8 @@
         #online{
             width:auto;
             height:auto;
-            background:#808080;
-            float:left;
+            background:#201ff4;
+            float:right;
         }
 
     </style>
@@ -68,7 +68,11 @@
     <form id="form1" runat="server">
 
     <div id="main">
-        <div id="top"></div>
+        <div id="top">
+            <div id="online">
+             <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </div>
+        </div>
         <div id="content">
             <div id="left">
                 <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XmlDataSource1" Width="16px" ImageSet="Arrows">
@@ -84,9 +88,7 @@
                 </asp:TreeView>
             </div>
             <div id="right">
-                <div id="online">
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                </div>
+                
                  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
                      
                  </asp:ContentPlaceHolder>
