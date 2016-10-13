@@ -70,7 +70,7 @@
     <div id="main">
         <div id="top">
             <div id="online">
-             <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
         </div>
         <div id="content">

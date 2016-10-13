@@ -25,16 +25,19 @@
         <table id="AddNewTeacher">
             <tr>
                 <td><asp:Label ID="Label2" runat="server" Text="教师类型"></asp:Label></td>
-                <td>  <asp:DropDownList ID="DropDownList1" runat="server" Height="17px" style="margin-left: 0" Width="144px">
+                <td>  <asp:DropDownList ID="DropDownList1" runat="server" Height="17px" style="margin-left: 0" Width="144px" DataSourceID="XmlDataSource3" DataTextField="title" DataValueField="title" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         </asp:DropDownList></td>
             </tr>
             <tr>
                 <td><asp:Label ID="Label3" runat="server" Text="所属部门"></asp:Label></td>
-                <td><asp:DropDownList ID="DropDownList2" runat="server" Height="17px" style="margin-left: 0" Width="144px">
+                <td><asp:DropDownList ID="DropDownList2" runat="server" Height="17px" style="margin-left: 0" Width="144px" DataSourceID="XmlDataSource2" DataTextField="title" DataValueField="title">
         </asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Label ID="Label4" runat="server" Text="教师工号"></asp:Label></td>
+                <td>
+                    <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/xml/AdminDepartmentXML.xml"></asp:XmlDataSource>
+                    <asp:XmlDataSource ID="XmlDataSource3" runat="server" DataFile="~/xml/AdminTeacherXML.xml"></asp:XmlDataSource>
+                    <asp:Label ID="Label4" runat="server" Text="教师工号"></asp:Label></td>
                 <td><asp:TextBox ID="TextBox1" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
             </tr>
             <tr>
@@ -46,12 +49,14 @@
                 <td><asp:TextBox ID="TextBox3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:TextBox></td>
             </tr>
             <tr>
-                <td> <asp:Label ID="Label7" runat="server" Text="权限"></asp:Label></td>
-                <td> <asp:DropDownList ID="DropDownList3" runat="server" Height="17px" style="margin-left: 0" Width="144px"></asp:DropDownList></td>
+                <td> 
+                    <asp:XmlDataSource ID="XmlDataSource4" runat="server" DataFile="~/xml/AdminRoleXML.xml"></asp:XmlDataSource>
+                    <asp:Label ID="Label7" runat="server" Text="权限"></asp:Label></td>
+                <td> <asp:DropDownList ID="DropDownList3" runat="server" Height="17px" style="margin-left: 0" Width="144px" DataSourceID="XmlDataSource4" DataTextField="title" DataValueField="title"></asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge"/></td>
-                <td><asp:Button ID="Button2" runat="server" Text="取消" /></td>
+                <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge" OnClick="Button1_Click"/></td>
+                <td><asp:Button ID="Button2" runat="server" Text="取消" OnClick="Button2_Click" /></td>
             </tr>
 
 

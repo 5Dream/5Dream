@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<teacher>
+  <department title ="安全保卫处">安全保卫处</department>
+  <department title="办公室">办公室</department>
+  <department title="财务审计处">财务审计处</department>
+  <department title="成人教育处">成人教育处</department>
+  <department title="会计系">会计系</department>
+  <department title="机械工程系">机械工程系</department>
+  <department title="基础教学部">基础教学部</department>
+  <department title="建筑工程系">建筑工程系</department>
+  <department title="教务处">教务处</department>
+  <department title="教学研究室">教学研究室</department>
+  <department title="经济管理系">经济管理系</department>
+  <department title="商务外语系">商务外语系</department>
+  <department title="实训中心">实训中心</department>
+  <department title="食品工程系">食品工程系</department>
+  <department title="宿舍管理中心">宿舍管理中心</department>
+  <department title="图书馆">图书馆</department>
+  <department title="网络信息中心">网络信息中心</department>
+  <department title="校领导">校领导</department>
+  <department title="信息工程系">信息工程系</department>
+  <department title="学生工作处">学生工作处</department>
+  <department title="饮食服务中心">饮食服务中心</department>
+  <department title="招生就业办公室">招生就业办公室</department>
+  <department title="总务处">总务处</department>
+  <department title="组织人事处">组织人事处</department>
+</teacher>
