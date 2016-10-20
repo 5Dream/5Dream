@@ -50,10 +50,14 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         {
             if (teacherType == "TabTeachers")
             {
-                BLL.AddSQLStringToDAL.AddTeacher(DropDownList2.Text, TextBox1.Text, TextBox3.Text, TextBox2.Text, DropDownList3.Text, DropDownList1.Text);
+                BLL.AddSQLStringToDAL.AddTeacher(DropDownList2.Text.ToString(), TextBox1.Text, TextBox3.Text, TextBox2.Text, DropDownList3.Text.ToString(), DropDownList1.Text.ToString());
+                Response.Write("<script>alert('添加成功')</script>");
+                Clear();
             }
             else {
-                BLL.AddSQLStringToDAL.AddTeacher(DropDownList2.Text, TextBox1.Text, TextBox3.Text, TextBox2.Text, DropDownList3.Text, DropDownList1.Text);
+                BLL.AddSQLStringToDAL.AddTeacher(DropDownList2.Text.ToString(), TextBox1.Text, TextBox3.Text, TextBox2.Text, DropDownList3.Text.ToString(), DropDownList1.Text.ToString());
+                Response.Write("<script>alert('添加成功')</script>");
+                Clear();
             }
           
         }

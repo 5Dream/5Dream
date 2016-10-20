@@ -24,11 +24,11 @@ namespace BLL
             string strSQL = "";
             if (teachers == "本校教师")
             {
-                strSQL = "INSERT INTO TobTeachers (Department,UserId,UserPWD,UserName,Role) VALUES (" + Department+","+UserId + "," + UserPWd + ","+UserName+"," + Role + ")";
+                strSQL = "INSERT INTO TabTeachers (Department,UserId,UserPWD,UserName,Role) VALUES ('" + Department+"','"+UserId + "','" + UserPWd + "','"+UserName+"','" + Role + "')";
             }
             else if (teachers == "外聘教师")
             {
-                strSQL = "INSERT INTO TobOtherTeachers (UserId,UserPWD,UserName,Role) VALUES (" + UserId + "," + UserPWd + "," + UserName + "," + Role + ")";
+                strSQL = "INSERT INTO TabOtherTeachers (UserId,UserPWD,UserName,Role) VALUES ('" + UserId + "','" + UserPWd + "','" + UserName + "','" + Role + "')";
             }
             else
             {
