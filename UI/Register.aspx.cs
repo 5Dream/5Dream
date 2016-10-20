@@ -26,19 +26,19 @@ public partial class Register : System.Web.UI.Page
             switch (Role)
             {
                 case "1":
-                    Response.Redirect("AdminDemo.aspx");
+                    Response.Redirect("Admin/AdminSchoolTeacher.aspx");
                     break;
                 case "2":
                     
-                    Response.Redirect("CounselorDemo.aspx");
+                    Response.Redirect("Counselor/CounselorChangePWD.aspx");
                     break;
                 case "3":
                    
-                    Response.Redirect("DepartDemo.aspx");
+                    Response.Redirect("Depart/DepartChangePWD.aspx");
                     break;
                 case "4":
                    
-                    Response.Redirect("TeachersDemo.aspx");
+                    Response.Redirect("Teachers/TeachersChangePWD.aspx");
                     break;
                 default:
                     break;

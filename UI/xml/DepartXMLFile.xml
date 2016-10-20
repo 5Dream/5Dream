@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteRoot id="root" url="" title="管理面板" description="">
   <siteMapNode url="" title="个人信息" description="">
-    <siteMapSubNode url="" title="修改密码" description="" />
+    <siteMapSubNode url="~\Depart/DepartChangePWD.aspx" title="修改密码" description="" />
   </siteMapNode>
 
   <siteMapNode url="" title="数据分析" description="">
-    <siteMapSubNode url="" title="系部分析" description="" />
-    <siteMapSubNode url="" title="漏报统计" description="" />
-    <siteMapSubNode url="" title="缺勤汇总" description="" />
-    <siteMapSubNode url="" title="作业统计" description="" />
-    <siteMapSubNode url="" title="导出数据" description="" />
+    <siteMapSubNode url="~\Depart/DepartDepartmentEachCompare.aspx" title="系部分析" description="" />
+    <siteMapSubNode url="~\Depart/DepartOrderByTeacherAttendanceCount.aspx" title="漏报统计" description="" />
+    <siteMapSubNode url="~\Depart/DepartOrderByStudentAttendanceCount.aspx" title="缺勤汇总" description="" />
+    <siteMapSubNode url="~\Depart/DepartHomeworkEachCompare.aspx" title="作业统计" description="" />
+    <siteMapSubNode url="~\Depart/DepartOutToExcel.aspx" title="导出数据" description="" />
   </siteMapNode>
 
   <siteMapNode url="" title="考勤信息" description="">
-    <siteMapSubNode url="" title="录入考勤" description="" />
-    <siteMapSubNode url="" title="以往记录" description="" />
+    <siteMapSubNode url="~\Depart/DepartSubmitAttendance.aspx" title="录入考勤" description="" />
+    <siteMapSubNode url="~\Depart/DepartOldData.aspx" title="以往记录" description="" />
   </siteMapNode>
 </siteRoot>
