@@ -11,6 +11,7 @@ public partial class ValidateImage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         string[] codes = {"商务学院","省属办公","青年湖","现代商务","食品科技",
             "现代制造","会计电算","经济管理","食品工程","机械工程","信息艺术",
             "商务外语","建筑工程","技术教学","双师素质","明德立新","精品课堂",
@@ -39,5 +40,7 @@ public partial class ValidateImage : System.Web.UI.Page
             g.DrawString(chkCode[i].ToString(), ft, new SolidBrush(clr), (float)i * 20, (float)1);
         }
         bmp.Save(Response.OutputStream, ImageFormat.Gif);
+
+       
     }
 }
