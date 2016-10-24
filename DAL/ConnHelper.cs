@@ -12,6 +12,8 @@ namespace DAL
 {
     public class ConnHelper
     {
+        
+
         public static List<string> GetDistinceColoum(string strSQL, string str1)
         {
             DataTable dt = GetDataTable(strSQL);
@@ -81,5 +83,17 @@ namespace DAL
             ds.CaseSensitive = false;
             return ds.Tables[0];
         }
+        public static DataTable SQLData(string strSQL)
+        {
+            string ConnectionString = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(strSQL,conn);
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+
     }
 }
