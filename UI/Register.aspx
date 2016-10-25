@@ -71,14 +71,14 @@
                         <td>
                             <asp:Label ID="Label1" runat="server" Text="用户名" Width="50px" Height="26px"></asp:Label>
                         </td>
-                        <td colspan="2"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td>
+                        <td colspan="2"><asp:TextBox ID="txtUserID" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td>
                               <asp:Label ID="Label2" runat="server" Text="  密码" Width="50px"></asp:Label>
                         </td>
                         <td colspan="2">
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="strPWD" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
