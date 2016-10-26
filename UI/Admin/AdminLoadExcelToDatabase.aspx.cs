@@ -23,45 +23,13 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             }
         }
     }
-    private void LoadExcel()
-    {
-        
-    }
-
-    /**
-     * 导入 教师按钮 
-     */
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Clear();
-        string identity = "";//表 
-        //如果单选按钮被选中
-        if (RadioButton1.Checked | RadioButton2.Checked)
-        {
-            if (RadioButton1.Checked)
-            {
-                identity = "TabTeachers";
-            }
-            else
-            {
-                identity = "TabOtherTeachers";
-            }
-            Upload();//文件上传
-            string path = currFilePath;
-           
-            Label4.Text =  BLL.ExcelToDatabase.CheckFile(path, identity);
-        }
-        else {
-            Label4.Text = "请先选中导入数据是“本校教师”或“外聘教师”";
-        }
-    }
 
     /**
      * 清除
      */
     private void Clear()
     {
-        Label4.Text = "";
+        messige1.Text = "";
     }
 
     /**
@@ -86,5 +54,34 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         this.currFilePath = tempPath + timess + fileName;//服务器端的全路径
         file.SaveAs(this.currFilePath);
+    }
+
+    /**
+    * 导入 教师按钮 
+    */
+    protected void Button1_Click1(object sender, EventArgs e)
+    {
+        Clear();
+        string identity = "";//表 
+        //如果单选按钮被选中
+        if (RadioButton1.Checked | RadioButton2.Checked)
+        {
+            if (RadioButton1.Checked)
+            {
+                identity = "TabTeachers";
+            }
+            else
+            {
+                identity = "TabOtherTeachers";
+            }
+            Upload();//文件上传
+            string path = currFilePath;
+
+            messige1.Text = BLL.ExcelToDatabase.CheckFile(path, identity);
+        }
+        else
+        {
+            messige1.Text = "请先选中导入数据是“本校教师”或“外聘教师”";
+        }
     }
 }
