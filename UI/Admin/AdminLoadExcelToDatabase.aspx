@@ -40,16 +40,18 @@
   
       </div>
       <div class="top">
-          <asp:Label ID="Label4" runat="server" Text="分系部导入教师信息"></asp:Label>
+          <asp:Label ID="Label4" runat="server" Text="分系部导入教师授课信息"></asp:Label>
       </div>
       <div class="LoadExcel">
   
-          <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList><br/>
+          <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/xml/AdminDepartments7XML.xml"></asp:XmlDataSource>
+  
+          <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="XmlDataSource2" DataTextField="title" DataValueField="title"></asp:DropDownList><br/>
   
           <asp:Label ID="Label5" runat="server" Text="选择要导入的文件"></asp:Label>
   
           <asp:FileUpload ID="FileUpload2" runat="server" Width="460px" />
-          <asp:Button ID="Button2" runat="server" Text="导入" Width="90px" />
+          <asp:Button ID="Button2" runat="server" Text="导入" Width="90px" OnClick="Button2_Click" />
   
           <br />
           <asp:Label ID="messige2" runat="server"></asp:Label>
@@ -95,9 +97,14 @@
         <asp:Label ID="Label16" runat="server" Text="数据处理"></asp:Label>
       </div>
       <div class="LoadExcel">
-          <asp:Button ID="Button5" runat="server" Text="分析入库数据" /><br />
-          <asp:Button ID="Button6" runat="server" Text="处理入库数据" /><br />
+          <asp:Button ID="Button5" runat="server" Text="分析入库数据" />
+          <asp:Label ID="messige5" runat="server"></asp:Label>
+          <br />
+          <asp:Button ID="Button6" runat="server" Text="处理入库数据" />
+          <asp:Label ID="messige6" runat="server"></asp:Label>
+          <br />
           <asp:Button ID="Button7" runat="server" Text="清空入库数据" />
+          <asp:Label ID="messige7" runat="server"></asp:Label>
       </div>
   
   </asp:Content>

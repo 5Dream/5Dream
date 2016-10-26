@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<teacher>
+  <department title="会计系">会计系</department>
+  <department title="建筑工程系">建筑工程系</department>
+  <department title="机械工程系">机械工程系</department>
+  <department title="经济管理系">经济管理系</department>
+  <department title="商务外语系">商务外语系</department>
+  <department title="食品工程系">食品工程系</department>
+  <department title="信息工程系">信息工程系</department>
+</teacher>

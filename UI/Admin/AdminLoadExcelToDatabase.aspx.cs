@@ -30,6 +30,12 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     private void Clear()
     {
         messige1.Text = "";
+        messige2.Text = "";
+        messige3.Text = "";
+        messige4.Text = "";
+        messige5.Text = "";
+        messige6.Text = "";
+        messige7.Text = "";
     }
 
     /**
@@ -83,5 +89,12 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         {
             messige1.Text = "请先选中导入数据是“本校教师”或“外聘教师”";
         }
+    }
+    /**
+     * 教师授课情况导入按钮
+     */ 
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        messige2.Text = DropDownList1.Text;
     }
 }
