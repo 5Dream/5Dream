@@ -36,7 +36,7 @@
           <asp:Button ID="Button1" runat="server" Text="导入" Width="90px" OnClick="Button1_Click1" />
   
           <br />
-          <asp:Label ID="messige1" runat="server" Text="Label"></asp:Label>
+          <asp:Label ID="messige1" runat="server"></asp:Label>
   
       </div>
       <div class="top">
@@ -52,7 +52,7 @@
           <asp:Button ID="Button2" runat="server" Text="导入" Width="90px" />
   
           <br />
-          <asp:Label ID="messige2" runat="server" Text="Label"></asp:Label>
+          <asp:Label ID="messige2" runat="server"></asp:Label>
   
       </div>
       <div class="top">
@@ -66,7 +66,7 @@
           <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" />
   
           <br />
-          <asp:Label ID="messige3" runat="server" Text="Label"></asp:Label>
+          <asp:Label ID="messige3" runat="server"></asp:Label>
   
       </div>
       <div class="top">
@@ -89,7 +89,7 @@
           <asp:TextBox ID="TextBox7" runat="server" Width="100px"></asp:TextBox>
           <asp:Button ID="Button4" runat="server" Text="确定" Width="90px" />
           <br />
-          <asp:Label ID="messige4" runat="server" Text="Label"></asp:Label>
+          <asp:Label ID="messige4" runat="server"></asp:Label>
       </div>
       <div class="top">
         <asp:Label ID="Label16" runat="server" Text="数据处理"></asp:Label>
