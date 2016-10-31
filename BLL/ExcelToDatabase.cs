@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using System.Web;
+using System.Data;
 
 
 
@@ -63,14 +64,32 @@ namespace BLL
         */
         public static string ToSQLServer(string fileName, string identity)
         {
-            //if (identity == "TabTeachers" | identity == "TabOtherTeachers")
-            //{
+            if (identity == "TabTeachers" | identity == "TabOtherTeachers")
+            {
                 return DAL.ExcelToSQLServer.ReadTeachersExcel(fileName, identity);
-            //}
-            //else
-            //{
-            //    return "";
-            //}
+            }
+            else if (identity == "TabCalendar")
+            {
+                return DAL.ExcelToSQLServer.ReadCalendarExcel(fileName, identity);
+            }
+            else
+            {
+                return "";
+            }
+        }
+        public static string ftefv(string DropDownList1 )
+        {
+            string strSQL = "insert into TabTeachers ";//导入数据表
+
+            if (ExcelToSQLServer.getDT(strSQL).Rows.Count != 0)
+            {
+                return "chengg";
+            }
+            else
+            {
+                return "shib";//判断是否成功
+            }
+
         }
     }
 }

@@ -3,7 +3,7 @@
  <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
   </asp:Content>
   <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <asp:Label ID="Label1" runat="server" Text="导入数据页面"></asp:Label>
+      <asp:Label ID="Label1" runat="server" Text="导入数据页面"></asp:Label>
  
      <style type="text/css">
          .LoadExcel{
@@ -65,7 +65,7 @@
   
   
           <asp:FileUpload ID="FileUpload3" runat="server" Width="460px" />
-          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" />
+          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" OnClick="Button3_Click" />
   
           <br />
           <asp:Label ID="messige3" runat="server"></asp:Label>
