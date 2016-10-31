@@ -23,35 +23,42 @@ public partial class Register : System.Web.UI.Page
 
             Session["UserID"] = dt.Rows[0]["UserName"].ToString();
             Session["Role"] = dt.Rows[0]["Role"].ToString();
-            switch (Role)
+            if (Session["ValidateCode"].ToString().Equals(TextBox4.Text))
+
             {
-                case "1":
-                    Response.Redirect("Admin/AdminSchoolTeacher.aspx");
-                    break;
-                case "2":
-                    
-                    Response.Redirect("Counselor/CounselorChangePWD.aspx");
-                    break;
-                case "3":
-                   
-                    Response.Redirect("Depart/DepartChangePWD.aspx");
-                    break;
-                case "4":
-                   
-                    Response.Redirect("Teachers/TeachersChangePWD.aspx");
-                    break;
-                default:
-                    break;
 
+                switch (Role)
+                {
+                    case "1":
+                        Response.Redirect("Admin/AdminSchoolTeacher.aspx");
+                        break;
+                    case "2":
 
+                        Response.Redirect("Counselor/CounselorChangePWD.aspx");
+                        break;
+                    case "3":
+
+                        Response.Redirect("Depart/DepartChangePWD.aspx");
+                        break;
+                    case "4":
+
+                        Response.Redirect("Teachers/TeachersChangePWD.aspx");
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+            else {
+                Label5.Text = "验证码错误";
             }
         }
         else
         {
-           
-           // Session["ValidateCode"] = "";
-            //lblMessage.Text = "用户名或密码不正确";
-            
+
+            Session["ValidateCode"] = "";
+            Label5.Text = "用户名或密码不正确";
+
         }
     }
 }

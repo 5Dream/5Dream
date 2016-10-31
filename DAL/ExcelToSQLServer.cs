@@ -137,8 +137,7 @@ namespace DAL
             //查询ds中的内容（=。=）
             for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
             {
-
-                strconn.Append("insert into " + identity + "(Department,UserID,UserPWD,UserName,Sex,Role) values(");
+                strconn.Append("insert into " + identity + "( ,UserID,UserPWD,UserName,Sex,Role) values(");
                 for (int j = 0; j <= 4; j++)
                 {
                     strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
