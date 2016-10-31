@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using System.Web;
+using System.Data;
 
 
 
@@ -71,6 +72,20 @@ namespace BLL
             //{
             //    return "";
             //}
+        }
+        public static string ftefv(string DropDownList1 )
+        {
+            string strSQL = "insert into TabTeachers ";//导入数据表
+
+            if (ExcelToSQLServer.getDT(strSQL).Rows.Count != 0)
+            {
+                return "chengg";
+            }
+            else
+            {
+                return "shib";//判断是否成功
+            }
+
         }
     }
 }

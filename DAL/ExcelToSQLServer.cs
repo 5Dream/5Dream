@@ -140,9 +140,9 @@ namespace DAL
                 strconn.Append("insert into " + identity + "(Department,UserID,UserPWD,UserName,Sex,Role) values(");
                 for (int j = 0; j <= 4; j++)
                 {
-                    strconn.Append("'"+ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString()+"',");
+                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
                 }
-                strconn.Append("'"+ds.Tables["ExcelInfo"].Rows[i].ItemArray[5]+"')");
+                strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[5] + "')");
                 string str2 = strconn.ToString();
                 cmd.CommandText = str2;
                 cmd.ExecuteNonQuery();
@@ -151,5 +151,20 @@ namespace DAL
             conn.Close();
             conn.Dispose();
         }
+
+             public static DataTable getDT(string strSQL)
+        {
+            string strConn = "data source=.;initial catalog=Test;uid=sa;password=sa";
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+
+            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+
+            return dt;
+        }
+    
     }
 }

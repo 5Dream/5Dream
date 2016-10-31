@@ -22,6 +22,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
             }
         }
+        
     }
 
     /**
@@ -41,6 +42,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     /**
      * 上传文件
      */ 
+
     private void Upload()
     {
         HttpPostedFile file = this.FileUpload1.PostedFile;
@@ -60,7 +62,10 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         this.currFilePath = tempPath + timess + fileName;//服务器端的全路径
         file.SaveAs(this.currFilePath);
+
+
     }
+
 
     /**
     * 导入 教师按钮 
@@ -95,6 +100,19 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
      */ 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        messige2.Text = DropDownList1.Text;
+        Clear();
+        if (DropDownList1.Text != "")
+        {
+            Upload();//文件上传
+            string path = currFilePath;
+
+            messige2.Text = BLL.ExcelToDatabase.ftefv(path);
+        }
+        else {
+            messige2.Text = "请先选择所属部门！";
+        }
+        /**
+         * 导入教师授课信息按钮
+         */
+        }
     }
-}
