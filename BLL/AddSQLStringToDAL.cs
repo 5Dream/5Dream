@@ -47,5 +47,9 @@ namespace BLL
             DataTable dt = ConnHelper.SQLData(strSQL);
             return dt;
         }
+        public static DataTable GetDatataBySQL(string str1,string str2,string st3)
+        {
+
+        }
     }
 }
