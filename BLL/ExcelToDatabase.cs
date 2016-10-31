@@ -91,5 +91,16 @@ namespace BLL
             }
 
         }
+     
+
+        public static bool InsertTabTeacherd(string v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool DeleteTabTeacher(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

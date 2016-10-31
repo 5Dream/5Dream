@@ -145,4 +145,35 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
 
     }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        if (TextBox1.Text != "" && TextBox2.Text != "" && TextBox3.Text != "" && TextBox4.Text != "" && TextBox5.Text != "" && TextBox6.Text != "" && TextBox7.Text != "")
+        {
+            string[] str = { "信息与艺术设计系", "会计系", "经济管理系", "食品工程系", "机械工程系", "建筑管理系", "商务外语系" };
+            int[] sum = new int[str.Length];
+            sum[0] = Convert.ToInt32(TextBox1.Text.Trim());
+            sum[1] = Convert.ToInt32(TextBox2.Text.Trim());
+            sum[2] = Convert.ToInt32(TextBox3.Text.Trim());
+            sum[3] = Convert.ToInt32(TextBox4.Text.Trim());
+            sum[4] = Convert.ToInt32(TextBox5.Text.Trim());
+            sum[5] = Convert.ToInt32(TextBox5.Text.Trim());
+            sum[6] = Convert.ToInt32(TextBox6.Text.Trim());
+            if (ExcelToDatabase.DeleteTabTeacher("TabDeparment"))
+            {
+
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (ExcelToDatabase.InsertTabTeacherd("TabDepartment", str[i], sum[i].ToString()))
+                    {
+                        messige4.Text = "各系部人数设置完毕";
+                    }
+                }
+            }
+        }
+        else
+        {
+            messige4.Text = "部分系部人数未设置，请确认设置";
+        }
+    }
 }
