@@ -123,7 +123,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         str = AddSQLStringToDAL.GetDistincString("Course","TeacherID");
         for (int i = 0; i < str.Count; i++)
         {
-            if (AddSQLStringToDAL.InsertTabTeachers("", str[i].ToString(), "False"))
+            if (AddSQLStringToDAL.InsertTeachers("", str[i].ToString(), "False"))
             {
                 messige5.Text = "正在进行处理";
             }
@@ -138,7 +138,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         for (int i = 0; i < strDistinctTeacherID.Count; i++)
         {
             List<string> DS = new List<string>();
-            DS = AddSQLStringToDAL.GetDistincString("Course","time and area","TeacherID",strDistinctTeacherID[i].ToString());
+            DS = AddSQLStringToDAL.GetDistinctString("Course","time and area","TeacherID",strDistinctTeacherID[i].ToString());
             for (int j = 0; j < DS.Count; j++)
             {
                 List<string> Result = new List<string>();
@@ -207,7 +207,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     }
     private void Shujuchuli()
     {
-        DataTable dt =AddSQLStringToDAL.GetDatataBySQL("course");
+        DataTable dt =AddSQLStringToDAL.GetDatatableBySQL("course");
         foreach (DataRow dr in dt.Rows)
         {
             string[] T = dr[""].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);//
@@ -259,7 +259,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     protected void Button7_Click(object sender, EventArgs e)
     {
         Clear();
-        if (AddSQLStringToDAL.DeleteTabTeachers("TabTeacherstatus") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherCourseSimpleMap") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherAttendance") && AddSQLStringToDAL.DeleteTabTeachers("TabStudentAttendance") && AddSQLStringToDAL.DeleteTabTeachers("homework"))
+        if (AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherstatus") && AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherCourseSimpleMap") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherAttendance") && AddSQLStringToDAL.DeleteTabTeachers("TabStudentAttendance") && AddSQLStringToDAL.DeleteTabTeachers("homework"))
         {
             messige7.Text = "数据清理完毕";
         }
