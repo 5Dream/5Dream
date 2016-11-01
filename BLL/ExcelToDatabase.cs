@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAL;
 using System.Web;
 using System.Data;
+using BLL;
 
 
 
@@ -73,18 +74,30 @@ namespace BLL
             //    return "";
             //}
         }
-        public static string ftefv(string DropDownList1 )
-        {
-            string strSQL = "insert into TabTeachers ";//导入数据表
 
-            if (ExcelToSQLServer.getDT(strSQL).Rows.Count != 0)
+        /**
+         * 
+         */ 
+       public static string Insertsoft(string currFilePath)
+        {
+            DataTable dt = ExcelToSQLServer.getDT(currFilePath);
+           
+
+            for(int i = 0; i < dt.Rows.Count; i++)
             {
-                return "chengg";
+                string strSQL = " insert into form (Adress,subject,department,credit,period,classRoom,faculty,stuID,stuName,class,sex,course1,course2，publicSector,Teachers)values('" + dt.Rows[i][2].ToString() + "','" + dt.Rows[i][3].ToString() + "','" + dt.Rows[i][4].ToString() + "','" + dt.Rows[i][5].ToString() + "','" + dt.Rows[i][6].ToString() + "','" + dt.Rows[i][7].ToString() + "','" + dt.Rows[i][8].ToString() + "','" + dt.Rows[i][9].ToString() + "','" + dt.Rows[i][10].ToString() + "','" + dt.Rows[i][11].ToString() + "','" + dt.Rows[i][12].ToString() + "','" + dt.Rows[i][13].ToString() + "','" + dt.Rows[i][14].ToString() + "','" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString()+"')";//导入数据表
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                if (ExcelToSQLServer.getDT(strSQL).Rows.Count != 0)
+                {
+                    return "成功";
+                }
+                else
+                {
+                    return "失败";
+                }
             }
-            else
-            {
-                return "shib";//判断是否成功
-            }
+            return "失败";
+            //边读取边拆解进入数据库
 
         }
     }

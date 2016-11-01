@@ -62,7 +62,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         this.currFilePath = tempPath + timess + fileName;//服务器端的全路径
         file.SaveAs(this.currFilePath);
-
+       
 
     }
 
@@ -106,7 +106,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             Upload();//文件上传
             string path = currFilePath;
 
-            messige2.Text = BLL.ExcelToDatabase.ftefv(path);
+            messige2.Text = BLL.ExcelToDatabase.Insertsoft(path);
         }
         else {
             messige2.Text = "请先选择所属部门！";

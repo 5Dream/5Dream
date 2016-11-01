@@ -152,19 +152,21 @@ namespace DAL
             conn.Dispose();
         }
 
-             public static DataTable getDT(string strSQL)
+             public static DataTable getDT(string currFilePath)
         {
-            string strConn = "data source=.;initial catalog=Test;uid=sa;password=sa";
-            SqlConnection conn = new SqlConnection(strConn);
+            string strConn = "data source=192.168.54.22;initial catalog=15softDB06;uid=sa;password=123";
+           OleDbConnection conn = new OleDbConnection(strConn);
             conn.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);
+
+            string strSQL = "select * form [Sheet1$]";//读取Excel表
+            OleDbDataAdapter da = new OleDbDataAdapter(strSQL, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            conn.Close();
+            conn.Close();//传入数据库
 
             return dt;
         }
-    
+       
     }
 }
