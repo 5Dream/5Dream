@@ -63,7 +63,6 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         this.currFilePath = tempPath + timess + fileName;//服务器端的全路径
         file.SaveAs(this.currFilePath);
        
-
     }
 
 
@@ -110,7 +109,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         else
         {
-            messige2.Text = "请先选择所属部门！";
+            messige2.Text = "文件为空，请重新选择！";
         }
     }
         /**
