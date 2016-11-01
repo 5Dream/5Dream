@@ -108,14 +108,14 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
             messige2.Text = BLL.ExcelToDatabase.ftefv(path);
         }
-        else {
+        else
+        {
             messige2.Text = "请先选择所属部门！";
         }
+    }
         /**
-         * 导入教师授课信息按钮
+         * 导入校历按钮
          */
-        }
-
     protected void Button3_Click(object sender, EventArgs e)
     {
         HttpPostedFile file2Calendar = this.FileUpload3.PostedFile;
@@ -123,6 +123,10 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         messige3.Text = ExcelToDatabase.CheckFile(file2CalendarFullName.ToString(), "TabCalendar");//导入数据库
 
     }
+    /**
+     * 文件上传（二）
+     * file ： 通过FileUpload获取的当前路径
+     */
     private string  Upload(HttpPostedFile file)
     {
         string fileName = file.FileName;//获取客户端的文件全路径
