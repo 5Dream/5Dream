@@ -89,7 +89,7 @@
           <asp:TextBox ID="TextBox6" runat="server" Width="100px"></asp:TextBox>
           <asp:Label ID="Label15" runat="server" Text="商务外语系"></asp:Label>
           <asp:TextBox ID="TextBox7" runat="server" Width="100px"></asp:TextBox>
-          <asp:Button ID="Button4" runat="server" Text="确定" Width="90px" OnClick="Button4_Click" />
+          <asp:Button ID="Button4" runat="server" Text="确定" Width="90px"  />
           <br />
           <asp:Label ID="messige4" runat="server"></asp:Label>
       </div>
