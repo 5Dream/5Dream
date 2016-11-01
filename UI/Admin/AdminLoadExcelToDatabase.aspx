@@ -65,7 +65,7 @@
   
   
           <asp:FileUpload ID="FileUpload3" runat="server" Width="460px" />
-          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" />
+          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" OnClick="Button3_Click" />
   
           <br />
           <asp:Label ID="messige3" runat="server"></asp:Label>
@@ -89,7 +89,7 @@
           <asp:TextBox ID="TextBox6" runat="server" Width="100px"></asp:TextBox>
           <asp:Label ID="Label15" runat="server" Text="商务外语系"></asp:Label>
           <asp:TextBox ID="TextBox7" runat="server" Width="100px"></asp:TextBox>
-          <asp:Button ID="Button4" runat="server" Text="确定" Width="90px" />
+          <asp:Button ID="Button4" runat="server" Text="确定" Width="90px" OnClick="Button4_Click" />
           <br />
           <asp:Label ID="messige4" runat="server"></asp:Label>
       </div>

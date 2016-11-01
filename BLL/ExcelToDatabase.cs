@@ -65,14 +65,18 @@ namespace BLL
         */
         public static string ToSQLServer(string fileName, string identity)
         {
-            //if (identity == "TabTeachers" | identity == "TabOtherTeachers")
-            //{
+            if (identity == "TabTeachers" | identity == "TabOtherTeachers")
+            {
                 return DAL.ExcelToSQLServer.ReadTeachersExcel(fileName, identity);
-            //}
-            //else
-            //{
-            //    return "";
-            //}
+            }
+            else if (identity == "TabCalendar")
+            {
+                return DAL.ExcelToSQLServer.ReadCalendarExcel(fileName, identity);
+            }
+            else
+            {
+                return "";
+            }
         }
 
         /**
@@ -99,6 +103,17 @@ namespace BLL
             return "失败";
             //边读取边拆解进入数据库
 
+        }
+     
+
+        public static bool InsertTabTeacherd(string v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool DeleteTabTeacher(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
