@@ -47,7 +47,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         HttpPostedFile file = this.FileUpload1.PostedFile;
         string fileName = file.FileName;//获取客户端的文件全路径
-        string tempPath =@"C:\Users\Administrator\Desktop\5Dream\UI\Fill\";//获取系统临时文件路径
+        string tempPath =Server.MapPath("../")+ "Files\\";//获取系统临时文件路径
         fileName = System.IO.Path.GetFileName(fileName);//获取文件名（不带路径）
         this.currFileExtension = System.IO.Path.GetExtension(fileName);//获取文件的扩展名
         //获取时间
@@ -130,7 +130,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     private string  Upload(HttpPostedFile file)
     {
         string fileName = file.FileName;//获取客户端的文件全路径
-        string tempPath = @"C:\Users\Administrator\Desktop\5Dream\UI\Fill\";//获取系统临时文件路径
+        string tempPath = Server.MapPath("../") + "Files\\";//获取系统临时文件路径
         fileName = System.IO.Path.GetFileName(fileName);//获取文件名（不带路径）
         this.currFileExtension = System.IO.Path.GetExtension(fileName);//获取文件的扩展名
         //获取时间
