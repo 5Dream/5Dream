@@ -270,18 +270,16 @@ namespace DAL
             //将Excel 读到内存中
             strSQL = "select * from [" + SheetName[0] + "]";
             ReadExcelToDataSet(fileName, strSQL);
-            if (true)
-            {
-                
-                return CoursesToSQLServer();
-                //return ds.Tables["ExcelInfo"].Rows[2].ItemArray[0].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[1].ToString() + ds.Tables["ExcelInfo"].Rows[2].ItemArray[2].ToString()+".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[3].ToString();
-            }
-            else
-            {
-
-            }
+            
+                return CoursesToSQLServer()+"...";
+                //Insert2DB();
+                //return "成功";
+                //return ds.Tables["ExcelInfo"].Rows.Count+ ds.Tables["ExcelInfo"].Rows[2].ItemArray[0].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[1].ToString() + ds.Tables["ExcelInfo"].Rows[2].ItemArray[2].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[3].ToString();
+          
         }
 
+
+        
         /**
          * 教师授课导入
          * 将内存中的数据写入数据库
@@ -289,34 +287,41 @@ namespace DAL
          */
         public static string CoursesToSQLServer()
         {
-            string strConn = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(strConn);
+            string strl = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(strl);
             conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             StringBuilder strconn = new StringBuilder();
-            List<string> str = new List<string>();
-
+            //List<string> str = new List<string>();
+            //string strs = "";
             for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
             {
-                str = SplitTeacherIDAndTeacherName(ds.Tables["ExcelInfo"].Rows[i].ItemArray[1].ToString());
-                    strconn.Append("insert into TabAllCourses (TeacherDepartment,TeacherID,TeacherName,TimeAndArea,Course,CourseScore,CourseCount,StudentSex,Class,StudentDepartment,StudentID,StudentName,StudentOriClass,CourseType1,CourseType2,StudengDepartment) values(");
-                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[0].ToString() + "','" + str[0] + "','" + str[1] + "'");
-                for (int j = 2; j <= 14; j++)
+                //str = SplitTeacherIDAndTeacherName(ds.Tables["ExcelInfo"].Rows[i].ItemArray[1].ToString());
+                strconn.Append("INSERT INTO TabAllCourses values(");
+                //strs = "INSERT INTO TabAllCourses values(";
+                // (TeacherDepartment,TeacherID,TeacherName,TimeAndArea,Course,Class,StudentDepartment,StudentID,StudentName,CourseScore,CourseCount,StudentSex,StudentOriClass,CourseType1,CourseType2) //strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[0].ToString() + "','" + str[0] + "','" + str[1] + "'");
+                for (int j = 0; j <= 13; j++)
                 {
-                    strconn.Append(",'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "'");
+                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
+                    //strs =strs+ "'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',";
                 }
-                strconn.Append(")");
+                strconn.Append("'"+ds.Tables["ExcelInfo"].Rows[i].ItemArray[14].ToString() + "')");
+                //strs = strs + ")";
                 string str2 = strconn.ToString(); //SQL完整的语句
                 cmd.CommandText = str2;
                 str2 = string.Empty;
-                //cmd.ExecuteNonQuery(); //返回操作数（更改了多少行）
+                //cmd.CommandText = strs;
+                //strs = string.Empty;
+                cmd.ExecuteNonQuery(); //返回操作数（更改了多少行）
                 strconn.Remove(0, strconn.Length);
                 System.GC.Collect();//回收机制
             }
+
             conn.Close();
             conn.Dispose();
-            return "succsee";
+            return strconn.ToString();
+            //return ds.Tables["ExcelInfo"].Rows.Count.ToString();
         }
 
         /**

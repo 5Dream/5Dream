@@ -106,6 +106,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             identity = DropDownList1.Text;
             string path = Upload(FileUpload2.PostedFile);//文件上传
             messige2.Text = ExcelToDatabase.CheckFile(path, identity);
+            //DAL.ExcelToSQLServer.Insert2DB(path, DropDownList1.Text);
         }
         else
         {
