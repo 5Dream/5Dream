@@ -11,4 +11,9 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
 
     }
+    //public object SplitString
+    //{
+    //    get;
+    //    private set;
+    //}
 }
