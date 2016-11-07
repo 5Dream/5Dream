@@ -270,22 +270,22 @@ namespace DAL
             //将Excel 读到内存中
             strSQL = "select * from [" + SheetName[0] + "]";
             ReadExcelToDataSet(fileName, strSQL);
-            
-                return CoursesToSQLServer()+"...";
-                //Insert2DB();
-                //return "成功";
-                //return ds.Tables["ExcelInfo"].Rows.Count+ ds.Tables["ExcelInfo"].Rows[2].ItemArray[0].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[1].ToString() + ds.Tables["ExcelInfo"].Rows[2].ItemArray[2].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[3].ToString();
-          
+
+
+            //Insert2DB();
+            return "成功";
+            //return ds.Tables["ExcelInfo"].Rows.Count+ ds.Tables["ExcelInfo"].Rows[2].ItemArray[0].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[1].ToString() + ds.Tables["ExcelInfo"].Rows[2].ItemArray[2].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[3].ToString();
+
         }
 
 
-        
+
         /**
          * 教师授课导入
          * 将内存中的数据写入数据库
          * 
          */
-        public static string CoursesToSQLServer()
+        public static void CoursesToSQLServer()
         {
             string strl = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(strl);
@@ -320,8 +320,6 @@ namespace DAL
 
             conn.Close();
             conn.Dispose();
-            return strconn.ToString();
-            //return ds.Tables["ExcelInfo"].Rows.Count.ToString();
         }
 
         /**
