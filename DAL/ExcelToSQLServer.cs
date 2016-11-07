@@ -45,6 +45,7 @@ namespace DAL
         /**
          * 获取Sheet 名（集合形式）
          * fileName 文件路径
+         * 返回Sheet名字的集合
          */
         private static List<string> GetSheetName(string fileName)
         {
@@ -137,8 +138,8 @@ namespace DAL
             //查询ds中的内容（=。=）
             for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
             {
-                strconn.Append("insert into " + identity + "( ,UserID,UserPWD,UserName,Sex,Role) values(");
-                for (int j = 0; j <= 4; j++)
+                strconn.Append("insert into " + identity + "(Department,UserID,UserPWD,UserName,Sex,Role) values(");
+                for (int j = 0; j <=4; j++)
                 {
                     strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
                 }
@@ -152,34 +153,40 @@ namespace DAL
             conn.Dispose();
         }
 
-             public static DataTable getDT(string strSQL)
-        {
-            string strConn = "data source=.;initial catalog=Test;uid=sa;password=sa";
-            SqlConnection conn = new SqlConnection(strConn);
-            conn.Open();
-
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            conn.Close();
-
-            return dt;
-        }
+        //     public static DataTable getDT(string currFilePath)
+        //{
+        //    string strConn = "data source=192.168.54.22;initial catalog=15softDB06;uid=sa;password=123";
+        //   OleDbConnection conn = new OleDbConnection(strConn);
+        //    conn.Open();
 
 
+        //    string strSQL = "select * form [Sheet1$]";//读取Excel表
+        //    OleDbDataAdapter da = new OleDbDataAdapter(strSQL, conn);
+        //    DataTable dt = new DataTable();
+        //    da.Fill(dt);
+        //    conn.Close();//传入数据库
 
+        //    return dt;
+        //}
+
+
+        /**
+         * 检测Sheet名字 
+         * fileName 文件路径
+         * identy 所用到的数据库
+         */
         public static string ReadCalendarExcel(string fileName, string identy) //导入周次
         {
             List<string> SheetName = new List<string>();
             SheetName = GetSheetName(fileName);
             string strSQL = "";
-            //检测工作表明
+            //检测工作表名
             if (SheetName[0] != "Sheet1$")
             {
                 return "指定的Excel文件的工作表名不为“Sheet1”，当前的表名为" + SheetName[0];
 
             }
-            strSQL = "selec * from [sheet1$]";
+            strSQL = "select * from [sheet1$]";
             ReadExcelToDataSet(fileName, strSQL);//读取数据并判定是否导入成功
 
             //if (CheckExcelTableCalendar())
@@ -192,24 +199,29 @@ namespace DAL
             //    return "选择的Excel文件中的内容与数据库不匹配，请确认！";
             //}
         }
+
+        /**
+         * 将数据传入到 SQL数据库
+         * identity 表名
+         */
         public static void CalendarToSQLServer(string identity)
         {
             //链接表
-            string strl = ConfigurationManager.ConnectionStrings["SDBISASConnectionString"].ConnectionString;
+            string strl = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(strl);
             conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             StringBuilder strconn = new StringBuilder();
-            for (int i = 0; i < ds.Tables["ExcelInfo"].Rows.Count; i++)//对应表结构 导入周次表
+            for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)//对应表结构 导入周次表
             {
-                strconn.Append("insert into" + identity + "(WeekNumber,StartWeek,EndWeek)values("); 
+                strconn.Append("insert into " + identity + "(WeekNumber,StartWeek,EndWeek)values("); 
                 for (int j = 0; j <= 1; j++)
                 {
-                    strconn.Append("" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + ",");
+                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
 
                 }
-                strconn.Append("" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[2] + ")");
+                strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[2] + "')");
                 string str2 = strconn.ToString();
                 cmd.CommandText = str2;
                 cmd.ExecuteNonQuery();
@@ -237,5 +249,93 @@ namespace DAL
         //        return false;
         //    }
         //}
+
+        /**
+         * 读取Excel表的内容
+         * 并传入数据库
+         * fileName 文件路径
+         * identity 表名（这里使用的是Excel表名）
+         */
+        public static string ReadCoursesExcel(string fileName, string identity)
+        {
+            //拿到SheetName
+            List<string> SheetName = new List<string>();
+            SheetName = GetSheetName(fileName);
+            string strSQL = "";
+            //判断SheetName是否为Excel表 的表名
+            if (SheetName[0] != identity + "$")
+            {
+                return "指定的Excel文件的工作表名不为“Sheet1”，当前的表名为" + SheetName[0];
+            }
+            //将Excel 读到内存中
+            strSQL = "select * from [" + SheetName[0] + "]";
+            ReadExcelToDataSet(fileName, strSQL);
+            
+                return CoursesToSQLServer()+"...";
+                //Insert2DB();
+                //return "成功";
+                //return ds.Tables["ExcelInfo"].Rows.Count+ ds.Tables["ExcelInfo"].Rows[2].ItemArray[0].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[1].ToString() + ds.Tables["ExcelInfo"].Rows[2].ItemArray[2].ToString() + ".." + ds.Tables["ExcelInfo"].Rows[2].ItemArray[3].ToString();
+          
+        }
+
+
+        
+        /**
+         * 教师授课导入
+         * 将内存中的数据写入数据库
+         * 
+         */
+        public static string CoursesToSQLServer()
+        {
+            string strl = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(strl);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            StringBuilder strconn = new StringBuilder();
+            //List<string> str = new List<string>();
+            //string strs = "";
+            for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
+            {
+                //str = SplitTeacherIDAndTeacherName(ds.Tables["ExcelInfo"].Rows[i].ItemArray[1].ToString());
+                strconn.Append("INSERT INTO TabAllCourses values(");
+                //strs = "INSERT INTO TabAllCourses values(";
+                // (TeacherDepartment,TeacherID,TeacherName,TimeAndArea,Course,Class,StudentDepartment,StudentID,StudentName,CourseScore,CourseCount,StudentSex,StudentOriClass,CourseType1,CourseType2) //strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[0].ToString() + "','" + str[0] + "','" + str[1] + "'");
+                for (int j = 0; j <= 13; j++)
+                {
+                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
+                    //strs =strs+ "'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',";
+                }
+                strconn.Append("'"+ds.Tables["ExcelInfo"].Rows[i].ItemArray[14].ToString() + "')");
+                //strs = strs + ")";
+                string str2 = strconn.ToString(); //SQL完整的语句
+                cmd.CommandText = str2;
+                str2 = string.Empty;
+                //cmd.CommandText = strs;
+                //strs = string.Empty;
+                cmd.ExecuteNonQuery(); //返回操作数（更改了多少行）
+                strconn.Remove(0, strconn.Length);
+                System.GC.Collect();//回收机制
+            }
+
+            conn.Close();
+            conn.Dispose();
+            return strconn.ToString();
+            //return ds.Tables["ExcelInfo"].Rows.Count.ToString();
+        }
+
+        /**
+         * 拆分字符串
+         */ 
+        private static List<string> SplitTeacherIDAndTeacherName(string str)
+        {
+            List<string> strSplit = new List<string>();
+            string[] newStr = str.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);//拆分字符串并
+            for (int i = 0; i < newStr.Length; i++)
+            {
+                strSplit.Add(newStr[i]);
+            }
+            return strSplit;
+        }
     }
 }
