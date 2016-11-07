@@ -7,10 +7,14 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
 using BLL;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.Security;
 public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 {
     string currFilePath = string.Empty;//待读取文件全路径
     string currFileExtension = string.Empty;//文件扩展名
+    private object SplitString;//生成本地SplitString
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -116,11 +120,11 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
          */
         }
 
-    protected void Button5_Click(object sender, EventArgs e)
+    protected void Button5_Click(object sender, EventArgs e)//分析数据
     {
         Clear();
         List<string> str = new List<string>();
-        str = AddSQLStringToDAL.GetDistincString("Course","TeacherID");
+        str = AddSQLStringToDAL.GetDistinctString("Course","TeacherID");
         for (int i = 0; i < str.Count; i++)
         {
             if (AddSQLStringToDAL.InsertTeachers("", str[i].ToString(), "False"))
@@ -142,17 +146,21 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             for (int j = 0; j < DS.Count; j++)
             {
                 List<string> Result = new List<string>();
+                //object SplitString = null;
                 Result = SplitString.GetSplitCountAndDetalis(DS[j]);
+                //生成本地的SplitString
                 DataTable dt = AddSQLStringToDAL.GetDatatableBySQL("Course","TeacherID", strDistinctTeacherID[i].ToString(),"time and area",DS[j].ToString());
                 for (int r = 0; r < (Result.Count / 4); r++)
                 {
                     String WeekRange = SplitString.GetWithoutWeek(Result[r * 4 + 0].ToString());
                     String week = (Result[r * 4 + 1].ToString());
-                    String time = (Result[r * 4 + 2].ToString());
+                    String time = (Result[r * 4 + 2].ToString()); 
                     String area = (Result[r * 4 + 3].ToString());
                     String course = (Result[r * 4 + 4].ToString());
                     if (AddSQLStringToDAL.InsertTabTeachers("TabTeacherSimpleMap", strDistinctTeacherID[i].ToString(), dt.Rows[0]["TeacherName"].ToString(), course, WeekRange, week, time, DS[j].ToString(), dt.Rows[0]["t4"].ToString(), dt.Rows.Count.ToString(), dt.Rows[0]["t1"].ToString(), dt.Rows[0][""].ToString(), area))
-                    { }
+                    {
+
+                    }
                     dt.Clear();
 
                 }
@@ -160,7 +168,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
     }
 
-    protected void Button6_Click(object sender, EventArgs e)
+    protected void Button6_Click(object sender, EventArgs e)//处理数据，调用shujuchuli
     {
         Clear();
         Shujuchuli();
@@ -205,12 +213,13 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         //}
 
     }
-    private void Shujuchuli()
+    private void Shujuchuli()//对数据的处理
     {
         DataTable dt =AddSQLStringToDAL.GetDatatableBySQL("course");
         foreach (DataRow dr in dt.Rows)
         {
-            string[] T = dr[""].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);//
+            string[] T = dr[""].ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            //设置清除数组里的空值
           
             for (int i = 0; i < T.Length; i++)
             {
@@ -256,7 +265,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
     }
 
-    protected void Button7_Click(object sender, EventArgs e)
+    protected void Button7_Click(object sender, EventArgs e)//清空数据
     {
         Clear();
         if (AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherstatus") && AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherCourseSimpleMap") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherAttendance") && AddSQLStringToDAL.DeleteTabTeachers("TabStudentAttendance") && AddSQLStringToDAL.DeleteTabTeachers("homework"))

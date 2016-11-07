@@ -64,14 +64,18 @@ namespace BLL
         */
         public static string ToSQLServer(string fileName, string identity)
         {
-            //if (identity == "TabTeachers" | identity == "TabOtherTeachers")
-            //{
+            if (identity == "TabTeachers" | identity == "TabOtherTeachers")
+            {
                 return DAL.ExcelToSQLServer.ReadTeachersExcel(fileName, identity);
-            //}
-            //else
-            //{
-            //    return "";
-            //}
+            }
+            else if (identity == "TabCalendar")
+            {
+                return DAL.ExcelToSQLServer.ReadCalendarExcel(fileName, identity);
+            }
+            else
+            {
+                return "";
+            }
         }
         public static string ftefv(string DropDownList1 )
         {

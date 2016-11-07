@@ -41,6 +41,7 @@ namespace DAL
                 return false;
             }
         }
+
         /**
          * 获取Sheet 名（集合形式）
          * fileName 文件路径
@@ -136,8 +137,7 @@ namespace DAL
             //查询ds中的内容（=。=）
             for (int i = 1; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
             {
-
-                strconn.Append("insert into " + identity + "(Department,UserID,UserPWD,UserName,Sex,Role) values(");
+                strconn.Append("insert into " + identity + "( ,UserID,UserPWD,UserName,Sex,Role) values(");
                 for (int j = 0; j <= 4; j++)
                 {
                     strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
@@ -165,6 +165,77 @@ namespace DAL
 
             return dt;
         }
-    
+
+
+
+        public static string ReadCalendarExcel(string fileName, string identy) //导入周次
+        {
+            List<string> SheetName = new List<string>();
+            SheetName = GetSheetName(fileName);
+            string strSQL = "";
+            //检测工作表明
+            if (SheetName[0] != "Sheet1$")
+            {
+                return "指定的Excel文件的工作表名不为“Sheet1”，当前的表名为" + SheetName[0];
+
+            }
+            strSQL = "selec * from [sheet1$]";
+            ReadExcelToDataSet(fileName, strSQL);//读取数据并判定是否导入成功
+
+            //if (CheckExcelTableCalendar())
+            //{
+                CalendarToSQLServer(identy); //导入数据库
+                return "文件导入成功";
+            //}
+            //else
+            //{
+            //    return "选择的Excel文件中的内容与数据库不匹配，请确认！";
+            //}
+        }
+        public static void CalendarToSQLServer(string identity)
+        {
+            //链接表
+            string strl = ConfigurationManager.ConnectionStrings["SDBISASConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(strl);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            StringBuilder strconn = new StringBuilder();
+            for (int i = 0; i < ds.Tables["ExcelInfo"].Rows.Count; i++)//对应表结构 导入周次表
+            {
+                strconn.Append("insert into" + identity + "(WeekNumber,StartWeek,EndWeek)values("); 
+                for (int j = 0; j <= 1; j++)
+                {
+                    strconn.Append("" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + ",");
+
+                }
+                strconn.Append("" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[2] + ")");
+                string str2 = strconn.ToString();
+                cmd.CommandText = str2;
+                cmd.ExecuteNonQuery();
+                strconn.Remove(0, strconn.Length);
+            }
+            conn.Close();
+            conn.Dispose();
+        }
+
+
+        //public static bool CheckExcelTableCalendar()  //检测周次
+        //{
+        //    try
+        //    {
+        //        string[] str = { "周次", "起", "止" };
+        //        for (int i = 0; i <= 2; i++)
+        //        {
+        //            if (ds.Tables["ExcelInfo"].Columns[i].ColumnName.ToString() != str[i])
+        //                return false;
+        //        }
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
