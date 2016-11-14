@@ -16,12 +16,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     string currFilePath = string.Empty;//待读取文件全路径
     string currFileExtension = string.Empty;//文件扩展名
    // private object SplitString;//生成本地SplitString
-    public object SplitString
-    {
-        get;
-        private set;
-    }
-
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         //判断是否是第一次请求
@@ -119,19 +114,27 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e)
     {
         Clear();
-        if (DropDownList1.Text != "")
-        {
-            Upload();//文件上传
-            string path = currFilePath;
+        string depatrment = "";
+        Upload();
+        string path = currFilePath;
+        depatrment = DropDownList1.SelectedItem.ToString();
+        messige2.Text = ExcelToDatabase.CheckFile(path, depatrment);
 
-            messige2.Text = BLL.ExcelToDatabase.ftefv(path);
-        }
-        else {
-            messige2.Text = "请先选择所属部门！";
-        }
-        /**
-         * 导入教师授课信息按钮
-         */
+
+        //Clear();
+        //if (DropDownList1.Text != "")
+        //{
+        //    Upload();//文件上传
+        //    string path = currFilePath;
+
+        //    messige2.Text = BLL.ExcelToDatabase.ftefv(path);
+        //}
+        //else {
+        //    messige2.Text = "请先选择所属部门！";
+        //}
+        ///**
+        // * 导入教师授课信息按钮
+        // */
     }
 
    
@@ -222,8 +225,6 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
     protected void Button5_Click1(object sender, EventArgs e)
     {
-
-       
     }
     private void InsertTeacherStatus()
     {
@@ -333,6 +334,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 
     protected void Button3_Click(object sender, EventArgs e)
     {
-
+        Clear();
+        AddSQLStringToDAL.DeleDeleteTabTeachers("TabCalendar");
+        messige3.Text = ExcelToDatabase.CheckFile(FileUpload3.FileName.ToString(), "TabCalendar");//传入文件路径获取返回值
     }
 }

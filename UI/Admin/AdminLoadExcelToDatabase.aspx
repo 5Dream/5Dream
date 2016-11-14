@@ -67,7 +67,7 @@
   
           <asp:FileUpload ID="FileUpload3" runat="server" Width="460px" />
            &nbsp;
-          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" OnClick="Button3_Click" style="height: 21px" BorderColor="#FFCCCC" />
+          <asp:Button ID="Button3" runat="server" Text="导入" Width="90px" OnClick="Button3_Click" BorderColor="#FFCCCC" />
   
           <br />
           <asp:Label ID="messige3" runat="server"></asp:Label>
