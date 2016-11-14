@@ -335,5 +335,17 @@ namespace DAL
             }
             return strSplit;
         }
+        public static void UpdateSQL(string strSQL)
+        {
+            string strConn = "data source=.;initial catalog=Test;uid=sa;pwd=123";
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+
+
+            SqlCommand cmd = new SqlCommand(strSQL, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            conn.Dispose();
+        }
     }
 }

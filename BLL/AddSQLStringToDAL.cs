@@ -88,5 +88,10 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+
+        public static bool DeleteTabTeachers(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
