@@ -12,7 +12,7 @@ namespace BLL
     {
         public static DataTable UserLogin(string UserID, string UserPWD)
         {
-            string strSQL = "select * from TabTeachers where UserID=" + UserID + "and UserPWD=" + UserPWD + "";
+            string strSQL = "select * from TabTeachers where UserID='" + UserID + "'and UserPWD='" + UserPWD + "'";
             DataTable dt = ConnHelper.GetDataTable(strSQL);
             return dt;
         }
