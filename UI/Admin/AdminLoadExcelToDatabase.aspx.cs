@@ -338,4 +338,31 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         AddSQLStringToDAL.DeleDeleteTabTeachers("TabCalendar");
         messige3.Text = ExcelToDatabase.CheckFile(FileUpload3.FileName.ToString(), "TabCalendar");//传入文件路径获取返回值
     }
+    
+    protected void Button8_Click(object sender, EventArgs e)
+    {
+        // 修改重置密码部分@20120508AM
+         DataTable dt = AddSQLStringToDAL.GetDatatableBySQL("Tab Teachers");
+        if (dt.Rows.Count > 0)
+        {
+            if (dt.Rows[0]["UserID"].ToString() == dt.Rows[0]["UserPWD"].ToString())
+            {
+                InitialPWD();
+            }
+        }
+        InsertTeacherStatus();
+    }
+    private void InitialPWD()
+    {
+        List<string> str = new List<string>();
+        str = AddSQLStringToDAL.GetDistinctString("Tab Teachers", "UserID");
+        for (int i = 0; i < str.Count; i++)
+        {
+            if (AddSQLStringToDAL.UpdateTabTeachers("TabTeachers", PWDProcess.MD5Encrypt(str[i].ToString(), PWDPrrocess.CreateKey(str[i].ToString())), str[i].ToString()))
+            {
+                messige5.Text = "正在初始化密码......";
+            }
+        }
+    }
+}
 }

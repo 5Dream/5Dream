@@ -108,8 +108,9 @@
         <asp:Label ID="Label16" runat="server" Text="数据处理"></asp:Label>
       </div>
       <div class="LoadExcel">
-          <asp:Button ID="Button5" runat="server" Text="分析入库数据" OnClick="Button5_Click1" BorderColor="#FFCCCC" />
+          <asp:Button ID="Button5" runat="server" Text="分析入库数据" OnClick="Button5_Click1" BorderColor="#FFCCCC" Height="21px" />
           <asp:Label ID="messige5" runat="server"></asp:Label>
+          <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="数据加密" />
           <br />
           <asp:Button ID="Button6" runat="server" Text="处理入库数据" OnClick="Button6_Click1" BorderColor="#FFCCCC" />
           <asp:Label ID="messige6" runat="server"></asp:Label>

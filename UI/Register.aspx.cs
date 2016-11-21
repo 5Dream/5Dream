@@ -16,6 +16,7 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+
         DataTable dt = AddSQLStringToDAL.UserLogin( txtUserID.Text.Trim(),  strPWD.Text.ToString());
         if (dt.Rows.Count == 1)
         {
