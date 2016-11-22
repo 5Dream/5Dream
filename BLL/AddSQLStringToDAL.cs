@@ -183,5 +183,15 @@ namespace BLL
                 return false;
             }
         }
+        public static bool UpdateTabTeachers(string TableName, string UserPWD, string UserID)
+        {
+            string strSQL = BuildSQLUpdateString(TableName, UserPWD, UserID);
+            return ConnHelper.ExecuteQueryOperation(strSQL);
+        }
+        private static string BuildSQLUpdateString(string strTableName, string UserPWD, string UserID)
+        {
+            return "update"+strTableName+"set UserPWD='"+UserPWD+"' where UserID = '"+UserID+"'";
+            //
+        }
     }
 }

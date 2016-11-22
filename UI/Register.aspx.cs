@@ -16,7 +16,8 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        DataTable dt = AddSQLStringToDAL.UserLogin( txtUserID.Text.Trim(),  strPWD.Text.ToString());
+        PWDProcess.MD5Encrypt(txtUserID.Text.Trim(), PWDProcess.CreateKey(txtUserID.Text.Trim()));
+        DataTable dt = AddSQLStringToDAL.UserLogin(txtUserID.Text.Trim(), strPWD.Text.ToString());
         if (dt.Rows.Count == 1)
         {
             string Role = dt.Rows[0]["Role"].ToString();
@@ -49,7 +50,8 @@ public partial class Register : System.Web.UI.Page
 
                 }
             }
-            else {
+            else
+            {
                 Label5.Text = "验证码错误";
             }
         }
