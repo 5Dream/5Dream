@@ -26,6 +26,42 @@ namespace DAL
             return strList;
 
         }
+        public static List<string> GetDistinceColoum(string strSQL, string str1,string str2)
+        {
+            DataTable dt = GetDataTable(strSQL);
+            List<string> strList = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                string str = dr[str1].ToString();
+                strList.Add(str);
+            }
+            return strList;
+
+        }
+        public static List<string> GetDistinceColoum(string strSQL, string str1,string str2,string str3)
+        {
+            DataTable dt = GetDataTable(strSQL);
+            List<string> strList = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                string str = dr[str1].ToString();
+                strList.Add(str);
+            }
+            return strList;
+
+        }
+        public static List<string> GetDistinceColoum(string strSQL, string str1, string str2,string str3,string str4,string str5)
+        {
+            DataTable dt = GetDataTable(strSQL);
+            List<string> strList = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                string str = dr[str1].ToString();
+                strList.Add(str);
+            }
+            return strList;
+
+        }
         public static DataTable GetDistinceColoum(string strSQL)
         {
             DataTable dt = GetDataTable(strSQL);

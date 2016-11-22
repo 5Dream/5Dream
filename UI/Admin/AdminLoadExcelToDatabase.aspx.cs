@@ -215,7 +215,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
                 string area = dr["Area"].ToString();
                 if (T[i].Length == 1)
                     T[i] = "0" + T[i];
-                if (AddSQLStringToDAL.InsertTabTeachers("", WeekNumber, TeacherDepartment, TeacherID, TeacherName, T[i].ToString(), Week, time, course, area, "没有考勤", "", dr["WithoutWeek"].ToString(), "", ""))
+                if (AddSQLStringToDAL.InsertTabTeachers("TabTeacherAttendance", WeekNumber, TeacherDepartment, TeacherID, TeacherName, T[i].ToString(), Week, time, course, area, "没有考勤", "", dr["WithoutWeek"].ToString(), "", ""))
                 { }
             }
         }
@@ -230,10 +230,10 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         Clear();
         List<string> str = new List<string>();
-        str = AddSQLStringToDAL.GetDistinctString("Course", "TeacherID");
+        str = AddSQLStringToDAL.GetDistinctString("TabAllCourses", "TeacherID");
         for (int i = 0; i < str.Count; i++)
         {
-            if (AddSQLStringToDAL.InsertTeachers("", str[i].ToString(), "False"))
+            if (AddSQLStringToDAL.InsertTabTeachers("TabTeacherstatus", str[i].ToString(), "False"))
             {
                 messige5.Text = "正在进行处理";
             }
@@ -247,53 +247,13 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         Clear();
         Shujuchuli();
-
-        //BLL.AddSQLStringToDAL AS = new BLL.AddSQLStringToDAL();
-        //DataTable dt = AS.getdt("select * from 考勤数据表");
-        //DataTable d = new DataTable();
-        //d.Columns.Add("承担单位");
-        //d.Columns.Add("教师工号");
-        //d.Columns.Add("教师姓名");
-        //d.Columns.Add("上课时间地点");
-        //d.Columns.Add("课程编号");
-        //d.Columns.Add("课程名称");
-        //d.Columns.Add("每周课程次数");
-        //for (int i = 0; i < dt.Rows.Count; i++)
-        //{
-        //    string shujuchuli = dt.Rows[i][3].ToString();
-        //    string[] chaifenhoudidian = shujuchuli.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
-        //    for (int j = 0; j < chaifenhoudidian.Length; j++)
-        //    {
-        //        DataRow dr = d.NewRow();
-        //        dr["承担单位"] = dt.Rows[i][0];
-        //        dr["教师工号"] = dt.Rows[i][1];
-        //        dr["教师姓名"] = dt.Rows[i][2];
-        //        dr["上课时间地点"] = shujuchuli[j];
-        //        dr["课程编号"] = dt.Rows[i][4];
-        //        dr["课程名称"] = dt.Rows[i][5];
-        //        dr["每周课程次数"] = dt.Rows[i][6];
-        //        dr["所属部门"] = dt.Rows[i][7];
-        //        dr["学分"] = dt.Rows[i][8];
-        //        dr["总学时"] = dt.Rows[i][9];
-        //        dr["上课班级名称"] = dt.Rows[i][10];
-        //        dr["院系部"] = dt.Rows[i][11];
-        //        dr["学生学号"] = dt.Rows[i][12];
-        //        dr["学生姓名"] = dt.Rows[i][13];
-        //        dr["行政班级"] = dt.Rows[i][14];
-        //        dr["性别"] = dt.Rows[i][15];
-        //        dr["课程类别1"] = dt.Rows[i][16];
-        //        dr["课程类别2"] = dt.Rows[i][17];
-        //        d.Rows.Add(dr);
-        //    }
-        //}
-
     }
 
     protected void Button7_Click1(object sender, EventArgs e)
     {
 
         Clear();
-        if (AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherstatus") && AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherCourseSimpleMap") && AddSQLStringToDAL.DeleDeleteTabTeachers("TabTeacherAttendance") && AddSQLStringToDAL.DeleteTabTeachers("TabStudentAttendance") && AddSQLStringToDAL.DeleteTabTeachers("homework"))
+        if (AddSQLStringToDAL.DeleteTabTeachers("TabTeacherstatus") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherCourseSimpleMap") && AddSQLStringToDAL.DeleteTabTeachers("TabTeacherAttendance") && AddSQLStringToDAL.DeleteTabTeachers("TabStudentAttendance") && AddSQLStringToDAL.DeleteTabTeachers("homework"))
         {
             messige7.Text = "数据清理完毕";
         }
@@ -303,39 +263,38 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         if (TextBox1.Text != "" && TextBox2.Text != "" && TextBox3.Text != "" && TextBox4.Text != "" && TextBox5.Text != "" && TextBox6.Text != "" && TextBox7.Text != "")
         {
-            string sql = "update CountSum set Sum='" + TextBox1.Text + "' where Department='kuaijixi'";
-            ExcelToSQLServer.UpdateSQL(sql);
-            string sql1 = "update CountSum set Sum='" + TextBox2.Text + "' where Department='xinxigongchengxi'";
-            ExcelToSQLServer.UpdateSQL(sql1);
-            string sql2 = "update CountSum set Sum='" + TextBox3.Text + "' where Department='jianzhugongchengxi'";
-            ExcelToSQLServer.UpdateSQL(sql2);
-            string sql3 = "update CountSum set Sum='" + TextBox4.Text + "' where Department='jingjiguanlixi'";
-            ExcelToSQLServer.UpdateSQL(sql3);
-            string sql4 = "update CountSum set Sum='" + TextBox5.Text + "' where Department='shipingongchengxi'";
-            ExcelToSQLServer.UpdateSQL(sql4);
-            string sql5 = "update CountSum set Sum='" + TextBox6.Text + "' where Department='jixiegongchengxi'";
-            ExcelToSQLServer.UpdateSQL(sql5);
-            string sql6 = "update CountSum set Sum='" + TextBox7.Text + "' where Department='shangwuwaiyuxi'";
-            ExcelToSQLServer.UpdateSQL(sql6);
-            Response.Write("<script>alert('导入成功！')</script>");
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-            TextBox6.Text = "";
-            TextBox7.Text = "";
+            string[] str = { "会计系", "信息工程系", "经济管理系", "食品工程系", "机械工程系", "商务外语系", "建筑工程系" };
+            int[] sum = new int[str.Length];
+            sum[0] = Convert.ToInt32(TextBox1.Text.Trim());
+            sum[1] = Convert.ToInt32(TextBox2.Text.Trim());
+            sum[2] = Convert.ToInt32(TextBox3.Text.Trim());
+            sum[3] = Convert.ToInt32(TextBox4.Text.Trim());
+            sum[4] = Convert.ToInt32(TextBox5.Text.Trim());
+            sum[5] = Convert.ToInt32(TextBox6.Text.Trim());
+            sum[6] = Convert.ToInt32(TextBox7.Text.Trim());
+            if (AddSQLStringToDAL.DeleteTabTeachers("TabDepartment"))
+            {
+
+            }
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (AddSQLStringToDAL.InsertTabTeachers("TabDepartment", str[i], sum[i].ToString()))
+                {
+                    messige4.Text = "各系部人数设置完毕！";
+                }
+
+            }
         }
         else
         {
-            Response.Write("<script>alert('请输入完整的数据')</script>");
+            messige4.Text = "部分系部人数未设置，请全部设置！";
         }
     }
 
     protected void Button3_Click(object sender, EventArgs e)
     {
         Clear();
-        AddSQLStringToDAL.DeleDeleteTabTeachers("TabCalendar");
+        AddSQLStringToDAL.DeleteTabTeachers("TabCalendar");
         messige3.Text = ExcelToDatabase.CheckFile(FileUpload3.FileName.ToString(), "TabCalendar");//传入文件路径获取返回值
     }
 }
