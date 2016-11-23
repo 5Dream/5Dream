@@ -56,9 +56,9 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
      * 上传文件
      */
 
-    private void Upload()
+    private void Upload(HttpPostedFile file)
     {
-        HttpPostedFile file = this.FileUpload1.PostedFile;
+        //HttpPostedFile file = this.FileUpload1.PostedFile;
         string fileName = file.FileName;//获取客户端的文件全路径
         string tempPath = @"C:\Users\Administrator\Desktop\5Dream\UI\Fill\";//获取系统临时文件路径
         fileName = System.IO.Path.GetFileName(fileName);//获取文件名（不带路径）
@@ -98,7 +98,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             {
                 identity = "TabOtherTeachers";
             }
-            Upload();//文件上传
+            HttpPostedFile file = this.FileUpload1.PostedFile;
+            Upload(file);//文件上传
             string path = currFilePath;
 
             messige1.Text = BLL.ExcelToDatabase.CheckFile(path, identity);
@@ -115,7 +116,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         Clear();
         string depatrment = "";
-        Upload();
+        HttpPostedFile file = this.FileUpload2.PostedFile;
+        Upload(file);
         string path = currFilePath;
         depatrment = DropDownList1.SelectedItem.ToString();
         messige2.Text = ExcelToDatabase.CheckFile(path, depatrment);
@@ -294,6 +296,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     protected void Button3_Click(object sender, EventArgs e)
     {
         Clear();
+        HttpPostedFile file = this.FileUpload3.PostedFile;
+        Upload(file);
         AddSQLStringToDAL.DeleteTabTeachers("TabCalendar");
         messige3.Text = ExcelToDatabase.CheckFile(FileUpload3.FileName.ToString(), "TabCalendar");//传入文件路径获取返回值
     }
