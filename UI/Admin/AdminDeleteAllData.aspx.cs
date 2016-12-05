@@ -11,4 +11,13 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
 
     }
+    public void Checked()
+    {
+        //string strSQL = "select count(*) from LocalTeacher";
+        //TextBox1.Text=
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }

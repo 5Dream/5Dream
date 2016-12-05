@@ -183,6 +183,30 @@ namespace BLL
                 return false;
             }
         }
+        public static bool DeleteTabTeachers(string TabName,string str1)
+        {
+            try
+            {
+                ConnHelper.GetDataTable("truncate table" + TabName);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool DeleteTabTeachers(string TabName,string str1,string str2)
+        {
+            try
+            {
+                ConnHelper.GetDataTable("truncate table" + TabName);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static bool UpdateTabTeachers(string TableName, string UserPWD, string UserID)
         {
             string strSQL = BuildSQLUpdateString(TableName, UserPWD, UserID);
