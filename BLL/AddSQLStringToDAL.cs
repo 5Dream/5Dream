@@ -212,10 +212,19 @@ namespace BLL
             string strSQL = BuildSQLUpdateString(TableName, UserPWD, UserID);
             return ConnHelper.ExecuteQueryOperation(strSQL);
         }
+        public static bool UpdateTabTeachers(string TableName,string Role,string UserRole,string UserID,string UID )
+        {
+            string strSQL = BuildSQLUpdateString(TableName,Role, UserRole, UID);
+            return ConnHelper.ExecuteQueryOperation(strSQL);
+        }
         private static string BuildSQLUpdateString(string strTableName, string UserPWD, string UserID)
         {
             return "update"+strTableName+"set UserPWD='"+UserPWD+"' where UserID = '"+UserID+"'";
             //
+        }
+        private static string BuildSQLUpdateString(string TableName,string Role,string UserRole,string UID)
+        {
+            return "update" + TableName + "set UserRole='" + UserRole + "'where UserID='" + UID + "'";
         }
     }
 }

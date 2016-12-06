@@ -73,10 +73,12 @@ namespace DAL
             string ConnectionString = ConfigurationManager.ConnectionStrings["AttendanceConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
+
             SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
             conn.Close();
+
             return ds;
         }
         public static int GetRecordCount(string strSQL)
