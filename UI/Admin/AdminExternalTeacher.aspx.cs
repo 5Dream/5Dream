@@ -45,8 +45,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         else if (DropDownList1.SelectedItem.ToString() != "所有记录" && TextBox1.Text != "")
         {
-            //    DataTable dt = BLL.AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", DropDownListTransform.DDLToString(), TextBox1.Text.Trim());//传递
-            //    BindToGridView(dt);
+        //    DataTable dt = BLL.AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", DropDownListTransform.DDLToString(), TextBox1.Text.Trim());//传递
+        //    BindToGridView(dt);
 
         }
     }
@@ -80,7 +80,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         string strUserRole = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text.ToString().Trim();
         string strUserID = GridView1.DataKeys[e.RowIndex].Value.ToString();
-        if (AddSQLStringToDAL.UpdateTabTeachers("TabTeachers", "Role", strUserRole, "UserID", strUserID))
+        if (AddSQLStringToDAL.UpdateTabTeachers("TabTeachers", "Role", strUserRole, "UserID", strUserID))//UPdateTabTeachers缺少五个重载
         {
             GridView1.EditIndex = -1;
             Bind();
@@ -106,3 +106,9 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
             TextBox1.Visible = true;
         }
     }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+}

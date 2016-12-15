@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Label ID="Label1" runat="server" Text="外聘教师页面"></asp:Label>
-       <br/>  &nbsp;&nbsp;  <asp:Label ID="Label2" runat="server" Text="查询范围："></asp:Label>
+     <br/>  &nbsp;&nbsp;  <asp:Label ID="Label2" runat="server" Text="查询范围："></asp:Label>
     <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="121px"></asp:DropDownList>
      &nbsp;&nbsp; &nbsp;<asp:Label ID="Label3" runat="server" Text="查询条件"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>&nbsp;

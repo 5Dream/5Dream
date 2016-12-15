@@ -48,8 +48,8 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
         }
         else if (DropDownList1.SelectedItem.ToString() != "所有记录" && TextBox1.Text!= "")
         {
-            DataTable dt = BLL.AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", DropDownListTransform.DDLToString(), TextBox1.Text.Trim());//传递
-            BindToGridView(dt);
+        //    DataTable dt = BLL.AddSQLStringToDAL.GetDatatableBySQL("TabTeachers", DropDownListTransform.DDLToString(), TextBox1.Text.Trim());//传递
+      //      BindToGridView(dt);
 
         }
     }

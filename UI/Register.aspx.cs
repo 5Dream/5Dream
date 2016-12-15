@@ -16,7 +16,7 @@ public partial class Register : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        PWDProcess.MD5Encrypt(txtUserID.Text.Trim(), PWDProcess.CreateKey(txtUserID.Text.Trim()));
+        //PWDProcess.MD5Encrypt(txtUserID.Text.Trim(), PWDProcess.CreateKey(txtUserID.Text.Trim()));
         DataTable dt = AddSQLStringToDAL.UserLogin(txtUserID.Text.Trim(), strPWD.Text.ToString());
         if (dt.Rows.Count == 1)
         {
