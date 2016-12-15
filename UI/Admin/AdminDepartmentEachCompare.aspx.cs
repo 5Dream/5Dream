@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BLL;
-using Microsoft.Office.Interop.OWCll;
+
 
 public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
 {
