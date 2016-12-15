@@ -63,14 +63,14 @@ namespace BLL
         }
         public static List<string> GetDistinctString(string strTable, string str1, string str2,string str3)
         {
-            string strSQL = BulidSQLDistinctString(strTable, str1, str2);
-            return ConnHelper.GetDistinceColoum(strSQL, str1, str2);
+            string strSQL = BulidSQLDistinctString(strTable, str1, str2,str3);
+            return ConnHelper.GetDistinceColoum(strSQL, str1, str2,str3);
 
         }
         public static List<string> GetDistinctString(string strTable, string str1, string str2,string str3,string str4,string str5)
         {
-            string strSQL = BulidSQLDistinctString(strTable, str1, str2);
-            return ConnHelper.GetDistinceColoum(strSQL, str1, str2);
+            string strSQL = BulidSQLDistinctString(strTable, str1, str2,str3,str4,str5);
+            return ConnHelper.GetDistinceColoum(strSQL, str1, str2,str3,str4,str5);
 
         }
 
@@ -80,15 +80,15 @@ namespace BLL
         }
         private static string BulidSQLDistinctString(string strTableName, string str1, string str2)
         {
-            return "select distinct" + str1 + "from" + strTableName;
+            return "select distinct" + str1 + str2+"from" + strTableName;
         }
         private static string BulidSQLDistinctString(string strTableName, string str1,string str2,string str3)
         {
-            return "select distinct" + str1 + "from" + strTableName;
+            return "select distinct" + str1 + str2 + str3 + "from" + strTableName;
         }
         private static string BulidSQLDistinctString(string strTableName, string str1, string str2,string str3,string str4,string str5)
         {
-            return "select distinct" + str1 + "from" + strTableName;
+            return "select distinct" + str1+ str2 + str3 + str4 +str5+ "from" + strTableName;
         }
 
         public static DataTable GetDatatableBySQL(string strSQL)
@@ -215,7 +215,30 @@ namespace BLL
         private static string BuildSQLUpdateString(string strTableName, string UserPWD, string UserID)
         {
             return "update"+strTableName+"set UserPWD='"+UserPWD+"' where UserID = '"+UserID+"'";
-            //
+           
         }
+        public static bool UpdateTabTeachers(string TableName, string UserPWD, string UserID, string str1)
+        {
+            string strSQL = BuildSQLUpdateString(TableName, UserPWD, UserID, str1);
+            return ConnHelper.ExecuteQueryOperation(strSQL);
+        }
+
+          private static string BuildSQLUpdateString(string strTableName, string UserPWD, string UserID,string str1)
+        {
+            return "update" + strTableName + "set UserPWD='" + UserPWD + "' where UserID = '" + UserID + "'"+str1+"'";
+
+        }
+        public static bool UpdateTabTeachers(string TableName, string UserPWD, string UserID, string str1,string str2)
+        {
+            string strSQL = BuildSQLUpdateString(TableName, UserPWD, UserID, str1,str2);
+            return ConnHelper.ExecuteQueryOperation(strSQL);
+        }
+
+        private static string BuildSQLUpdateString(string strTableName, string UserPWD, string UserID, string str1,string str2)
+        {
+            return "update" + strTableName + "set UserPWD='" + UserPWD + "' where UserID = '" + UserID + "'" + str1 + "'"+str2+"'";
+
+        }
+
     }
 }

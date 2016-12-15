@@ -83,7 +83,7 @@ public partial class Admin_AdminSchoolTeacher : System.Web.UI.Page
     {
         string strUserRole = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text.ToString().Trim();
         string strUserID = GridView1.DataKeys[e.RowIndex].Value.ToString();
-        if (AddSQLStringToDAL.UpdateTabTeachers("TabTeachers", "Role", strUserRole, "UserID", strUserID))//UPdateTabTeachers缺少五个重载
+        if (AddSQLStringToDAL.UpdateTabTeachers("TabTeachers", "Role", strUserRole, "UserID", strUserID))
         {
             GridView1.EditIndex = -1;
             Bind();
