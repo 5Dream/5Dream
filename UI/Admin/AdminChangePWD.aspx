@@ -5,25 +5,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
        <style type="text/css">
          .LoadExcel{
-             background:#00ffff;
              border-bottom-width:1px;
               border-bottom-color:#000000;
               margin:0 auto;
   
               text-size-adjust:100%;
           }
-          .top {
-              background: cornflowerblue;
+            .top {
+       background-color:gray;
               border-bottom-width:1px;
-              border-bottom-color: cornflowerblue;
               margin:0 auto;
-  
               text-size-adjust:100%;
+              font-size:large;
+              font-family: Arial,KaiTi;
           }
-  
       </style>
     <div class="top">
-        <asp:Label ID="Label1" runat="server" Text="修改密码"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="修改密码"></asp:Label></div>
      <div class="LoadExcel"><br />
         <table align="center">
             <tr>

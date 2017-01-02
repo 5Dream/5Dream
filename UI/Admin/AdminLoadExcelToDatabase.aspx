@@ -6,20 +6,20 @@
  
      <style type="text/css">
          .LoadExcel{
-             background:#00ffff;
+            
              border-bottom-width:1px;
               border-bottom-color:#000000;
               margin:0 auto;
   
               text-size-adjust:100%;
           }
-          .top {
-              background: cornflowerblue;
+            .top {
+       background-color:gray;
               border-bottom-width:1px;
-              border-bottom-color: cornflowerblue;
               margin:0 auto;
-  
               text-size-adjust:100%;
+              font-size:large;
+              font-family: Arial,KaiTi;
           }
   
       </style>

@@ -3,23 +3,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Label ID="Label1" runat="server" Text="清空数据页面"></asp:Label>
+ 
     <style type="text/css">
          .LoadExcel{
-             background:#00ffff;
-             border-bottom-width:1px;
+              border-bottom-width:1px;
               border-bottom-color:#000000;
               margin:0 auto;
-  
               text-size-adjust:100%;
           }
           .top {
-              background: cornflowerblue;
+       background-color:gray;
               border-bottom-width:1px;
               border-bottom-color: cornflowerblue;
               margin:0 auto;
-  
               text-size-adjust:100%;
+              font-size:large;
+              font-family: Arial,KaiTi;
           }
   
       </style>

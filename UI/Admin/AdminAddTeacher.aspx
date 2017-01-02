@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Label ID="Label1" runat="server" Text="新增用户页面"></asp:Label>
-    <br />
     <style type="text/css">
         table {
             margin:0 auto;
@@ -19,8 +17,19 @@
             width:400px;
             height:400px;
         }
+           .top {
+       background-color:gray;
+              border-bottom-width:1px;
+              margin:0 auto;
+              text-size-adjust:100%;
+              font-size:large;
+              font-family: Arial,KaiTi;
+          }
         
     </style>
+    <div class="top">  
+     <asp:Label ID="Label1" runat="server" Text="新增用户页面"></asp:Label>
+ </div>
     <div>
         <table id="AddNewTeacher">
             <tr>
@@ -55,8 +64,8 @@
                 <td> <asp:DropDownList ID="DropDownList3" runat="server" Height="17px" style="margin-left: 0" Width="144px" DataSourceID="XmlDataSource4" DataTextField="title" DataValueField="title"></asp:DropDownList></td>
             </tr>
             <tr>
-                <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge" OnClick="Button1_Click"/></td>
-                <td><asp:Button ID="Button2" runat="server" Text="取消" OnClick="Button2_Click" /></td>
+                <td><asp:Button ID="Button1" runat="server" Text="确定" BorderStyle="Ridge" OnClick="Button1_Click" BorderColor="#FF9999"/></td>
+                <td><asp:Button ID="Button2" runat="server" Text="取消" OnClick="Button2_Click" BorderColor="#FF9999" /></td>
             </tr>
 
 

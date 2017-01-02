@@ -6,7 +6,7 @@
     
      <style type="text/css">
          .LoadExcel{
-             background:#00ffff;
+           
              border-bottom-width:1px;
               border-bottom-color:#000000;
               margin:0 auto;
@@ -14,12 +14,12 @@
               text-size-adjust:100%;
           }
           .top {
-              background: cornflowerblue;
+       background-color:gray;
               border-bottom-width:1px;
-              border-bottom-color: cornflowerblue;
               margin:0 auto;
-  
               text-size-adjust:100%;
+              font-size:large;
+              font-family: Arial,KaiTi;
           }
   
       </style>
@@ -36,31 +36,52 @@
          <asp:RadioButton ID="RadioButton3" runat="server"  Text="近一个月情况"/>
          <asp:RadioButton ID="RadioButton4" runat="server"  Text="开学至今"/>
          <asp:Button ID="Button2" runat="server" Text="生成图表" BorderColor="#FFCCCC" />
-         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" GridLines="Horizontal" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px">
+             <AlternatingRowStyle BackColor="#F7F7F7" />
              <Columns>
-                 <asp:BoundField HeaderText="系部" DataField="系部" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="在校人数" DataField="在校人数" ItemStyle-Width="90px" />
-                 <asp:BoundField HeaderText="旷课率" DataField="旷课率" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="迟到人数" DataField="迟到人数" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="迟到率" DataField="迟到率" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="早退人数" DataField="早退人数" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="早退率" DataField="早退率" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="请假人数" DataField="请假人数" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="请假率" DataField="请假率" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="总缺勤数" DataField="总缺勤数" ItemStyle-Width="90px"/>
-                 <asp:BoundField HeaderText="总缺勤率" DataField="总缺勤率" ItemStyle-Width="90px"/>
+                 <asp:BoundField HeaderText="系部" DataField="系部" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="在校人数" DataField="在校人数" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="旷课率" DataField="旷课率" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="迟到人数" DataField="迟到人数" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="迟到率" DataField="迟到率" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="早退人数" DataField="早退人数" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="早退率" DataField="早退率" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="请假人数" DataField="请假人数" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="请假率" DataField="请假率" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="总缺勤数" DataField="总缺勤数" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
+                 <asp:BoundField HeaderText="总缺勤率" DataField="总缺勤率" ItemStyle-Width="90px">
+<ItemStyle Width="90px"></ItemStyle>
+                 </asp:BoundField>
              </Columns>
-             <EditRowStyle BackColor="#999999" />
-             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-             <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-             <SortedAscendingCellStyle BackColor="#E9E7E2" />
-             <SortedAscendingHeaderStyle BackColor="#506C8C" />
-             <SortedDescendingCellStyle BackColor="#FFFDF8" />
-             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+             <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+             <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+             <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+             <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+             <SortedAscendingCellStyle BackColor="#F4F4FD" />
+             <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+             <SortedDescendingCellStyle BackColor="#D8D8F0" />
+             <SortedDescendingHeaderStyle BackColor="#3E3277" />
          </asp:GridView>
          <table>
              <tr>
